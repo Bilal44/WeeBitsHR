@@ -1,5 +1,6 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
+    background-color: #65e8e0;
 }
 
 @media (min-width: 768px) {
@@ -14,5 +15,17 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #65e8e0;
+}
+
+.splash {
+    background: url("../img/main.jpg");
+    height: 80vh;
+    background-position: center;
+    background-size: cover;
+}
+
+footer {
+    display: contents;
 }
