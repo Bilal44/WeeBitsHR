@@ -29,3 +29,7 @@ body {
 footer {
     display: contents;
 }
+
+.form-control, #login-submit {
+    margin-bottom: 0.5em;
+}
