@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aspnet-WeeBitsHRService-7721FF62-45CC-43A7-B8F4-0D868C98C6F3</UserSecretsId>
+    <UserSecretsId>aspnet-WeeBitsHRService-A4144D2D-9187-4528-860D-0A28994E6342</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

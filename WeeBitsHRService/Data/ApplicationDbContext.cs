@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using WeeBitsHRService.Model;
 
 namespace WeeBitsHRService.Data
 {
@@ -9,5 +10,7 @@ namespace WeeBitsHRService.Data
             : base(options)
         {
         }
+        public DbSet<Branch> Branches { get; set; }
+        public DbSet<JobCategory> JobCategories { get; set; }
     }
 }
