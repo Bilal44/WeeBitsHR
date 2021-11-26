@@ -7,52 +7,6 @@ namespace WeeBitsHRService.Model
     public class Employee : User
     {
         [Required]
-        [StringLength(20)]
-        public string Title { get; set; }
-
-        [Required]
-        [StringLength(30)]
-        [Display(Name = "First Name")]
-        public string FirstName { get; set; }
-
-        [Required]
-        [StringLength(20)]
-        [Display(Name = "Last Name")]
-        public string LastName { get; set; }
-
-        [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
-
-        [Required]
-        [StringLength(100)]
-        [Display(Name = "Address Line 1")]
-        public string AddressLine1 { get; set; }
-
-        [StringLength(100)]
-        [Display(Name = "Address Line 2")]
-        public string AddressLine2 { get; set; }
-
-        [Required]
-        [StringLength(20)]
-        public string Town { get; set; }
-
-        [Required]
-        [StringLength(10)]
-        [Display(Name = "Post Code")]
-        public string PostCode { get; set; }
-
-        [Required]
-        [StringLength(30)]
-        public string Country { get; set; }
-
-        [Required]
-        [RegularExpression(@"^\+[1-9]\d{10,14}$", ErrorMessage = "Please enter a valid phone number including your country code (e.g. +44 for UK).")]
-        [Display(Name = "Phone Number Including Country Code")]
-        public string PhoneNumber { get; set; }
-
-        [Required]
         [StringLength(30)]
         [Display(Name = "Payroll Number")]
         public string PayrollNumber { get; set; }
@@ -77,6 +31,7 @@ namespace WeeBitsHRService.Model
         public DateTime DOB { get; set; }
 
         [Required]
+        [EnumDataType(typeof(Gender))]
         [Display(Name = "Gender")]
         public Gender Gender { get; set; }
 
@@ -91,15 +46,16 @@ namespace WeeBitsHRService.Model
         [ForeignKey("JobCategory")]
         [Display(Name = "JobCategory")]
         public int JobCategoryId { get; set; }
-        public JobCategory JobCategory { get; set; }
+        public JobCategory? JobCategory { get; set; }
 
         [Required]
         [ForeignKey("Branch")]
         [Display(Name = "Branch")]
         public int BranchId { get; set; }
-        public Branch Branch { get; set; }
 
-        public ICollection<TimeOff> TimeOff { get; set; }
+        public Branch? Branch { get; set; }
+        
+        public ICollection<TimeOff>? TimeOff { get; set; }
 
     }
 

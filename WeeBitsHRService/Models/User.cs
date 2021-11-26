@@ -32,7 +32,7 @@ namespace WeeBitsHRService.Model
 
         [StringLength(100)]
         [Display(Name = "Address Line 2")]
-        public string AddressLine2 { get; set; }
+        public string? AddressLine2 { get; set; }
 
         [Required]
         [StringLength(20)]
