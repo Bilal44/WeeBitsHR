@@ -12,11 +12,6 @@ namespace WeeBitsHRService.Model
         public string PayrollNumber { get; set; }
 
         [Required]
-        [DefaultValue(true)]
-        [Display(Name = "Active User")]
-        public bool IsActive { get; set; }
-
-        [Required]
         [StringLength(20)]
         public string Position { get; set; }
 
@@ -44,18 +39,18 @@ namespace WeeBitsHRService.Model
 
         [Required]
         [ForeignKey("JobCategory")]
-        [Display(Name = "JobCategory")]
+        [Display(Name = "Job Category")]
         public int JobCategoryId { get; set; }
-        public JobCategory? JobCategory { get; set; }
+        public JobCategory JobCategory { get; set; }
 
         [Required]
         [ForeignKey("Branch")]
         [Display(Name = "Branch")]
         public int BranchId { get; set; }
 
-        public Branch? Branch { get; set; }
+        public Branch Branch { get; set; }
         
-        public ICollection<TimeOff>? TimeOff { get; set; }
+        public ICollection<TimeOff> TimeOff { get; set; }
 
     }
 

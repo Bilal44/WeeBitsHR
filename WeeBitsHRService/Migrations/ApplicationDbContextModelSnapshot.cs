@@ -8,7 +8,7 @@ using WeeBitsHRService.Data;
 
 #nullable disable
 
-namespace WeeBitsHRService.Data.Migrations
+namespace WeeBitsHRService.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -86,6 +86,10 @@ namespace WeeBitsHRService.Data.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -137,6 +141,8 @@ namespace WeeBitsHRService.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -237,7 +243,6 @@ namespace WeeBitsHRService.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("AddressLine2")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Country")
@@ -280,6 +285,114 @@ namespace WeeBitsHRService.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("JobCategories");
+                });
+
+            modelBuilder.Entity("WeeBitsHRService.Model.TimeOff", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("DateofAbsence")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("EmployeeId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<decimal>("NumberOfHours")
+                        .HasColumnType("decimal(4,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.ToTable("TimeOff");
+                });
+
+            modelBuilder.Entity("WeeBitsHRService.Model.Employee", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
+
+                    b.Property<string>("AddressLine1")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("AddressLine2")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("BranchId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<DateTime>("DOB")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("JobCategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("JoinDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<DateTime?>("LeaveDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PayrollNumber")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("Position")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("PostCode")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<decimal>("Salary")
+                        .HasColumnType("decimal(10,2)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Town")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.HasIndex("BranchId");
+
+                    b.HasIndex("JobCategoryId");
+
+                    b.HasDiscriminator().HasValue("Employee");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -331,6 +444,37 @@ namespace WeeBitsHRService.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("WeeBitsHRService.Model.TimeOff", b =>
+                {
+                    b.HasOne("WeeBitsHRService.Model.Employee", null)
+                        .WithMany("TimeOff")
+                        .HasForeignKey("EmployeeId");
+                });
+
+            modelBuilder.Entity("WeeBitsHRService.Model.Employee", b =>
+                {
+                    b.HasOne("WeeBitsHRService.Model.Branch", "Branch")
+                        .WithMany()
+                        .HasForeignKey("BranchId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WeeBitsHRService.Model.JobCategory", "JobCategory")
+                        .WithMany()
+                        .HasForeignKey("JobCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Branch");
+
+                    b.Navigation("JobCategory");
+                });
+
+            modelBuilder.Entity("WeeBitsHRService.Model.Employee", b =>
+                {
+                    b.Navigation("TimeOff");
                 });
 #pragma warning restore 612, 618
         }

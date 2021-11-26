@@ -10,6 +10,8 @@ namespace WeeBitsHRService.Data
             : base(options)
         {
         }
+
+        public DbSet<Employee> Employees { get; set; }
         public DbSet<Branch> Branches { get; set; }
         public DbSet<JobCategory> JobCategories { get; set; }
     }

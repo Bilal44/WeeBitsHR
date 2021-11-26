@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore.;
+using Microsoft.EntityFrameworkCore;
 using WeeBitsHRService.Data;
 using WeeBitsHRService.Model;
 
@@ -15,17 +16,19 @@ namespace WeeBitsHRService.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly IUserStore<IdentityUser> _userStore;
 
-        public EmployeesController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
+        public EmployeesController(ApplicationDbContext context, UserManager<IdentityUser> userManager, IUserStore<IdentityUser> userStore)
         {
             _context = context;
             _userManager = userManager;
+            _userStore = userStore;
         }
 
         // GET: Employees
         public async Task<IActionResult> Index()
         {
-            IEnumerable<Employee> employees = (IEnumerable<Employee>) await _context.Users.OfType<Employee>().Include(e => e.Branch).ThenInclude(e => e.JobCategory).ToListAsync();
+            var employees = await _context.Employees.Include(e => e.JobCategory).Include(e => e.Branch).ToListAsync();
             return View(employees);
         }
 
@@ -37,9 +40,10 @@ namespace WeeBitsHRService.Controllers
                 return NotFound();
             }
 
-            var employee = await _context.Users.OfType<Employee>()
+            var employee = await _context.Employees
+                .Where(e => e.Id == id)
                 .Include(e => e.BranchId).Include(e => e.JobCategory)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync();
             if (employee == null)
             {
                 return NotFound();
@@ -59,10 +63,18 @@ namespace WeeBitsHRService.Controllers
         // POST: Employees/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,FirstName,LastName,Email,AddressLine1,AddressLine2,Town,PostCode,Country,PhoneNumber,PayrollNumber,IsActive,Position,Salary,DOB,Gender,JoinDate,LeaveDate,JobCategoryId,BranchId")] Employee employee)
+        public async Task<IActionResult> Create(Employee employee)
         {
-            var result = await _userManager.CreateAsync(employee, "def-Password-123");
-            return RedirectToAction("Index");
+            employee.IsActive = true;
+            employee.EmailConfirmed = true;
+
+            await _userStore.SetUserNameAsync(employee, employee.Email, CancellationToken.None);
+            var result = await _userManager.CreateAsync(employee, "Default-pass-123");
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index");
+            }
+
             ViewData["BranchId"] = new SelectList(_context.Set<Branch>(), "Id", "Region", employee.BranchId);
             ViewData["JobCategoryId"] = new SelectList(_context.Set<JobCategory>(), "Id", "Name", employee.JobCategoryId);
             return View(employee);
