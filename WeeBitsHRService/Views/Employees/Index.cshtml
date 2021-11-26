@@ -94,10 +94,7 @@
                 @item.JoinDate.ToShortDateString()
             </td>
             <td>
-                    @{
-                        var leaveDate = item.LeaveDate.HasValue ? item.LeaveDate.Value.ToShortDateString() : "";
-                        Html.Display(leaveDate);
-                    }
+                    @item.LeaveDate?.ToShortDateString()
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.JobCategory.Name)
