@@ -33,16 +33,16 @@ namespace WeeBitsHRService.Controllers
         }
 
         // GET: Employees/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(string email)
         {
-            if (id == null)
+            if (email == null)
             {
                 return NotFound();
             }
 
             var employee = await _context.Employees
-                .Where(e => e.Id == id)
-                .Include(e => e.BranchId).Include(e => e.JobCategory)
+                .Where(e => e.Email == email)
+                .Include(e => e.Branch).Include(e => e.JobCategory)
                 .FirstOrDefaultAsync();
             if (employee == null)
             {

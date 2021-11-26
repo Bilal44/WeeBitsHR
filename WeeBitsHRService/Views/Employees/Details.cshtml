@@ -4,10 +4,10 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1 class="text-center">Employee Details</h1>
 
 <div>
-    <h4>Employee</h4>
+    <h4>@Model.FirstName @Model.LastName</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -98,7 +98,7 @@
             @Html.DisplayNameFor(model => model.DOB)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DOB)
+            @Model.DOB.ToShortDateString()
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Gender)
@@ -110,28 +110,28 @@
             @Html.DisplayNameFor(model => model.JoinDate)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.JoinDate)
+            @Model.JoinDate.ToShortDateString()
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.LeaveDate)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LeaveDate)
+            @Model.LeaveDate?.ToShortDateString()
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.JobCategory)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.JobCategory.Id)
+            @Html.DisplayFor(model => model.JobCategory.Name)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Branch)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Branch.Id)
+            @Html.DisplayFor(model => model.Branch.Region)
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Index">Back to List</a>
+<div class="col-md-4">
+    <a class="btn btn-primary" asp-action="Index">Back to Employee List</a>
 </div>
