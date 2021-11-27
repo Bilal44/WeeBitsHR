@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -52,14 +51,13 @@ namespace WeeBitsHRService.Model
         public string Country { get; set; }
 
         [Required]
-        [RegularExpression(@"^\+[1-9]\d{10,14}$", ErrorMessage = "Please enter a valid phone number including your country code (e.g. +44 for UK).")]
-        [Display(Name = "Phone Number Including Country Code")]
+        [RegularExpression(@"^\+?[1-9]\d{4,14}$", ErrorMessage = "Please enter a valid phone number")]
+        [Display(Name = "Phone Number")]
         public override string PhoneNumber { get => base.PhoneNumber; set => base.PhoneNumber = value; }
 
         [Required]
-        [DefaultValue(true)]
         [Display(Name = "Active")]
-        public bool IsActive { get; set; }
+        public bool IsActive { get; set; } = true;
 
         [NotMapped]
         [Required]
