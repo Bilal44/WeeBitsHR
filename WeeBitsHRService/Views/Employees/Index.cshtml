@@ -91,16 +91,16 @@
                 @Html.DisplayFor(modelItem => item.Salary)
             </td>
             <td>
-                @item.DOB.ToShortDateString()
+                @Html.DisplayFor(modelItem => item.DOB)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Gender)
             </td>
             <td>
-                @item.JoinDate.ToShortDateString()
+                @Html.DisplayFor(modelItem => item.JoinDate)
             </td>
             <td>
-                    @item.LeaveDate?.ToShortDateString()
+                @Html.DisplayFor(modelItem => item.LeaveDate)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.JobCategory.Name)

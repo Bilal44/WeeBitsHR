@@ -22,6 +22,7 @@ namespace WeeBitsHRService.Model
         public decimal Salary { get; set; }
 
         [Required]
+        [DataType(DataType.Date)]
         [Display(Name = "Date of Birth")]
         public DateTime DOB { get; set; }
 
@@ -31,9 +32,11 @@ namespace WeeBitsHRService.Model
         public Gender Gender { get; set; }
 
         [Required]
+        [DataType(DataType.Date)]
         [Display(Name = "Join Date")]
         public DateTime JoinDate { get; set; }
 
+        [DataType(DataType.Date)]
         [Display(Name = "Leave Date")]
         public DateTime? LeaveDate { get; set; }
 
