@@ -1,4 +1,4 @@
-﻿namespace WeeBitsHRService.Model
+﻿namespace WeeBitsHRService.Models
 {
     public class JobCategory
     {

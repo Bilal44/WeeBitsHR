@@ -18,7 +18,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
-using WeeBitsHRService.Model;
+using WeeBitsHRService.Models;
 
 namespace WeeBitsHRService.Areas.Identity.Pages.Account
 {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WeeBitsHRService.Model
+namespace WeeBitsHRService.Models
 {
     public class Branch
     {

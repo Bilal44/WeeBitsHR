@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using WeeBitsHRService.Model;
+using WeeBitsHRService.Models;
 
 namespace WeeBitsHRService.Data
 {

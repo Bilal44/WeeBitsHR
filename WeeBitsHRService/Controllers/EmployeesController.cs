@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WeeBitsHRService.Data;
-using WeeBitsHRService.Model;
+using WeeBitsHRService.Models;
 
 namespace WeeBitsHRService.Controllers
 {

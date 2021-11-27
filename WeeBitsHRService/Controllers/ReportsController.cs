@@ -8,7 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WeeBitsHRService.Data;
-using WeeBitsHRService.Model;
+using WeeBitsHRService.Models;
+using WeeBitsHRService.ViewModels;
 
 namespace WeeBitsHRService.Controllers
 {
@@ -46,6 +47,22 @@ namespace WeeBitsHRService.Controllers
 
             ViewData["Count"] = employees.Count;
             
+            return View(employees);
+        }
+
+        // GET: AveragePayrate
+        public async Task<IActionResult> AveragePayrate(Gender? gender, int? branchId)
+        {
+            var employees = await _context.Employees
+                .Where(e => (!branchId.HasValue || e.BranchId == branchId)
+                && (!gender.HasValue || e.Gender == gender)
+                && e.IsActive)
+                .Include(e => e.JobCategory).Include(e => e.Branch).ToListAsync();
+
+            ViewData["AvgPaybyGender"] = employees.GroupBy(e => e.Gender).Select(g => new AveragePayByGenderViewModel { Gender = g.Key, AveragePay = g.Average(e => e.Salary) });
+            ViewData["AvgPaybyJob"] = employees.GroupBy(e => e.JobCategory).Select(g => new AveragePayByJobViewModel { JobCategory = g.Key, AveragePay = g.Average(e => e.Salary) });
+
+
             return View(employees);
         }
     }
