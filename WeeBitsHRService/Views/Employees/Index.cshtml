@@ -1,14 +1,20 @@
 ﻿@model IEnumerable<WeeBitsHRService.Model.Employee>
 
 @{
-    ViewData["Title"] = "Employees";
+    ViewData["Title"] = "All WeeBits Computer Employees";
 }
+<link rel="stylesheet" href="~/lib/plugins/datatables/dataTables.min.css" />
+<link rel="stylesheet" href="~/lib/plugins/datatables/datatables-reports.min.css" />
 
-<h1>Employees</h1>
+<h1>@ViewData["Title"]</h1>
 
 <p>
-    <a asp-action="Create">Add Employee</a>
+    <br />
+    <a class="btn btn-lg btn-success" asp-action="Create"><i class="fas fa-plus"></i> Add Employee</a>
+    <br />
 </p>
+
+<br />
 <table class="table">
     <thead>
         <tr>
@@ -22,10 +28,10 @@
                 @Html.DisplayNameFor(model => model.Email)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PhoneNumber)          
+                Phone No.
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PayrollNumber)
+                Payroll No.
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.IsActive)
@@ -37,19 +43,19 @@
                 @Html.DisplayNameFor(model => model.Salary)
             </th>
              <th>
-                @Html.DisplayNameFor(model => model.DOB)
+                DOB
             </th>
              <th>
                 @Html.DisplayNameFor(model => model.Gender)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.JoinDate)
+                Join
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LeaveDate)
+                Leave
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.JobCategory)
+                Job Cat
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Branch)
@@ -103,9 +109,12 @@
                 @Html.DisplayFor(modelItem => item.Branch.Region)
             </td>
             <td>
-                <a class="btn btn-xs btn-info" asp-action="Details" asp-route-email="@item.Email"><i class="fas fa-info-circle"></i> Details</a>
+                <a class="btn btn-sm btn-primary" asp-action="Details" asp-route-email="@item.Email"><i class="fas fa-info-circle"></i> Details</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/plugins/datatables/dataTables.js"></script>
+<script src="~/js/employees.js"></script>

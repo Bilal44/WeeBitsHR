@@ -39,13 +39,12 @@ namespace WeeBitsHRService.Model
 
         [Required]
         [ForeignKey("JobCategory")]
-        [Display(Name = "Job Category")]
         public int JobCategoryId { get; set; }
+        [Display(Name = "Job Category")]
         public JobCategory JobCategory { get; set; }
 
         [Required]
         [ForeignKey("Branch")]
-        [Display(Name = "Branch")]
         public int BranchId { get; set; }
 
         public Branch Branch { get; set; }

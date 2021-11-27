@@ -33,3 +33,43 @@ footer {
 .form-control, #login-submit {
     margin-bottom: 0.5em;
 }
+
+.dataTable th {
+    background-color: #000;
+    color: white;
+}
+
+.dataTable td {
+    background-color: #65e8e0;
+}
+
+.dt-button {
+    margin-top: -0.33em;
+    margin-right: 0 !important;
+    margin-left: 0.5em;
+    padding: 0.3em 0.5em !important;
+    font-size: .875rem !important;
+    border-radius: 0.2rem !important;
+}
+
+.dt-buttons {
+    margin-left: 5em;
+}
+
+.buttons-columnVisibility {
+    margin-left: 0;
+}
+
+#DataTables_Table_0_length {
+    float: left;
+}
+
+#DataTables_Table_0_filter {
+    float: right;
+}
+
+@media (min-width: 1400px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+        max-width: 1700px;
+    }
+}
