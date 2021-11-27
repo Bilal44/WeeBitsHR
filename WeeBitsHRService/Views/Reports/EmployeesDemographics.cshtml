@@ -1,0 +1,132 @@
+﻿@model IEnumerable<WeeBitsHRService.Model.Employee>
+
+@{
+	ViewData["Title"] = "All WeeBits Computer Employees";
+}
+<link rel="stylesheet" href="~/lib/plugins/datatables/dataTables.css" />
+<link rel="stylesheet" href="~/lib/plugins/datatables/datatables-reports.min.css" />
+
+<h1 class="text-center">@ViewData["Title"]</h1>
+
+<br />
+<h2 class="text-center">Employee Count: @ViewData["Count"] - <a href="#" id="reveal" class="link-primary">click here to reveal all employees meeting the criteria</a>.</h2>
+<div id="demographics" class="d-none">
+	<p>
+		<br />
+		<a class="btn btn-lg btn-success" asp-action="Create"><i class="fas fa-plus"></i> Add Employee</a>
+		<br />
+	</p>
+
+	<br />
+	<table id="list" class="table hide">
+		<thead>
+			<tr>
+				<th>
+					@Html.DisplayNameFor(model => model.FirstName)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.LastName)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Email)
+				</th>
+				<th>
+					Phone No.
+				</th>
+				<th>
+					Payroll No.
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.IsActive)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Position)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Salary)
+				</th>
+				<th>
+					DOB
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Gender)
+				</th>
+				<th>
+					Join
+				</th>
+				<th>
+					Leave
+				</th>
+				<th>
+					Job Cat
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Branch)
+				</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => item.FirstName)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.LastName)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Email)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.PhoneNumber)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.PayrollNumber)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.IsActive)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Position)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Salary)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.DOB)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Gender)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.JoinDate)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.LeaveDate)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.JobCategory.Name)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Branch.Region)
+					</td>
+					<td>
+						<a class="btn btn-sm btn-primary" asp-action="Details" asp-route-email="@item.Email"><i class="fas fa-info-circle"></i> Details</a>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/plugins/datatables/dataTables.js"></script>
+<script src="~/js/employees.js"></script>
+<script>
+	const table = document.getElementById("demographics");
+	const link = document.getElementById("reveal");
+	link.onclick = () => {
+		table.classList.toggle("d-none")
+	};
+</script>

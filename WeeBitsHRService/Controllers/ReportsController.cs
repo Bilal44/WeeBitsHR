@@ -25,33 +25,28 @@ namespace WeeBitsHRService.Controllers
             _userStore = userStore;
         }
 
-        // GET: Employees
+        // GET: CurrentEmployees
         public async Task<IActionResult> CurrentEmployees(int? branchId)
         {
             var employees = await _context.Employees
-                .Where(e => (branchId.HasValue ? e.BranchId == branchId : e.BranchId != null) && e.IsActive)
+                .Where(e => (!branchId.HasValue || e.BranchId == branchId) && e.IsActive)
                 .Include(e => e.JobCategory).Include(e => e.Branch).ToListAsync();
             return View(employees);
         }
 
-        // GET: Employees/Details/5
-        public async Task<IActionResult> Details(string email)
+        // GET: EmployeesDemographics
+        public async Task<IActionResult> EmployeesDemographics(Gender? gender, int? startAge, int? endAge)
         {
-            if (email == null)
-            {
-                return NotFound();
-            }
+            var employees = await _context.Employees
+                .Where(e => (!startAge.HasValue || e.DOB < DateTime.Now.AddYears(-startAge.Value))
+                && (!endAge.HasValue || e.DOB > DateTime.Now.AddYears(-endAge.Value))
+                && (!gender.HasValue || e.Gender == gender)
+                && e.IsActive)
+                .Include(e => e.JobCategory).Include(e => e.Branch).ToListAsync();
 
-            var employee = await _context.Employees
-                .Where(e => e.Email == email)
-                .Include(e => e.Branch).Include(e => e.JobCategory)
-                .FirstOrDefaultAsync();
-            if (employee == null)
-            {
-                return NotFound();
-            }
-
-            return View(employee);
+            ViewData["Count"] = employees.Count;
+            
+            return View(employees);
         }
     }
 }
