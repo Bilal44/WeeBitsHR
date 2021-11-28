@@ -77,7 +77,7 @@
 						@Html.DisplayFor(modelItem => item.PayrollNumber)
 					</td>
 					<td>
-						@Html.DisplayFor(modelItem => item.IsActive)
+						@Html.Raw(item.IsActive ? "<i class='far fa-2x fa-check-circle text-success'></i>" : "<i class='far fa-2x fa-minus-circle text-danger'></i>")
 					</td>
 					<td>
 						@Html.DisplayFor(modelItem => item.Position)

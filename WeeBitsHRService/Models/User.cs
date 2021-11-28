@@ -51,7 +51,7 @@ namespace WeeBitsHRService.Models
         public string Country { get; set; }
 
         [Required]
-        [RegularExpression(@"^\+?[1-9]\d{4,14}$", ErrorMessage = "Please enter a valid phone number")]
+        [RegularExpression(@"^\+?[0-9]\d{4,14}$", ErrorMessage = "Please enter a valid phone number.")]
         [Display(Name = "Phone Number")]
         public override string PhoneNumber { get => base.PhoneNumber; set => base.PhoneNumber = value; }
 

@@ -82,3 +82,7 @@ footer {
     font-size: 1.3rem;
     font-weight: 600;
 }
+
+main {
+    min-height: 85vh;
+}

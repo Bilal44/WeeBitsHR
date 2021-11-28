@@ -67,19 +67,26 @@ namespace WeeBitsHRService.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Employee employee)
         {
-            employee.IsActive = true;
-            employee.EmailConfirmed = true;
+            ViewData["BranchId"] = new SelectList(_context.Set<Branch>(), "Id", "Region", employee.BranchId);
+            ViewData["JobCategoryId"] = new SelectList(_context.Set<JobCategory>(), "Id", "Name", employee.JobCategoryId);
+
+            var duplicatePayroll = await _context.Employees.CountAsync(e => e.PayrollNumber == employee.PayrollNumber);
+            if (duplicatePayroll > 0)
+            {
+                TempData["Error"] = $"An employee already exists with payroll number '{employee.PayrollNumber}'. " +
+                    $"Every employee should have a unique payroll number, please make sure that a new payroll number has been " +
+                    "assigned to the employee.";
+            }
 
             await _userStore.SetUserNameAsync(employee, employee.Email, CancellationToken.None);
             var result = await _userManager.CreateAsync(employee, "Default-pass-123");
             if (result.Succeeded)
             {
                 await _userManager.AddToRoleAsync(employee, "Employee");
+                TempData["SM"] = $"Successfully added '{employee.FirstName} {employee.LastName} ({employee.PayrollNumber})' as a new employee.";
                 return RedirectToAction("Index");
             }
 
-            ViewData["BranchId"] = new SelectList(_context.Set<Branch>(), "Id", "Region", employee.BranchId);
-            ViewData["JobCategoryId"] = new SelectList(_context.Set<JobCategory>(), "Id", "Name", employee.JobCategoryId);
             return View(employee);
         }
     }

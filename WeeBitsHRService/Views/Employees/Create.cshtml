@@ -9,6 +9,7 @@
 <div class="row">
 	<center>
 		<div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
+			<partial name="_StatusMessage" />
 			<form asp-action="Create">
 				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 				<div class="form-floating">
@@ -78,7 +79,7 @@
 					<span asp-validation-for="Salary" class="text-danger"></span>
 				</div>
 				<div class="form-floating">
-					<input asp-for="DOB" class="form-control" placeholder=" " />
+					<input asp-for="DOB" class="form-control" placeholder=" " min="@DateTime.Now.Date.AddYears(-99).ToString("yyyy-MM-dd")" max="@DateTime.Now.Date.AddYears(-16).ToString("yyyy-MM-dd")" />
 					<label asp-for="DOB" class="control-label"></label>
 					<span asp-validation-for="DOB" class="text-danger"></span>
 				</div>
@@ -88,7 +89,7 @@
 					<span asp-validation-for="Gender" class="text-danger"></span>
 				</div>
 				<div class="form-floating">
-					<input asp-for="JoinDate" class="form-control" placeholder=" " />
+					<input asp-for="JoinDate" class="form-control" placeholder=" " min="2020-03-01" max="@DateTime.Now.Date.ToString("yyyy-MM-dd")" />
 					<label asp-for="JoinDate" class="control-label"></label>
 					<span asp-validation-for="JoinDate" class="text-danger"></span>
 				</div>
