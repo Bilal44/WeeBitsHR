@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WeeBitsHRService.Models
 {
-    public class TimeOff
+    public class Absence
     {
         public int Id { get; set; }
 
@@ -14,7 +14,8 @@ namespace WeeBitsHRService.Models
         [Required]
         [Display(Name = "Number of Hours")]
         [Column(TypeName = "decimal(4,2)")]
-        [DataType(DataType.Currency)]
+        [DataType(DataType.Date)]
+        [Range(0, 24, ErrorMessage = "Please enter valid number between 0 and 24")]
         public double NumberOfHours { get; set; }
     }
 }

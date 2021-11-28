@@ -51,8 +51,7 @@ namespace WeeBitsHRService.Models
 
         public Branch Branch { get; set; }
         
-        public ICollection<TimeOff> TimeOff { get; set; }
-
+        public ICollection<Absence> Absences { get; set; }
     }
 
     public enum Gender { Female, Male, Other }

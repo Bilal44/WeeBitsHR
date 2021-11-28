@@ -16,14 +16,10 @@ namespace WeeBitsHRService.Controllers
     public class ReportsController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly IUserStore<IdentityUser> _userStore;
 
-        public ReportsController(ApplicationDbContext context, UserManager<IdentityUser> userManager, IUserStore<IdentityUser> userStore)
+        public ReportsController(ApplicationDbContext context)
         {
             _context = context;
-            _userManager = userManager;
-            _userStore = userStore;
         }
 
         // GET: CurrentEmployees
@@ -64,6 +60,18 @@ namespace WeeBitsHRService.Controllers
 
 
             return View(employees);
+        }
+
+        // GET: AbsenteeProfile
+        public async Task<IActionResult> AbsenteeProfile()
+        {
+            var employees = await _context.Employees
+                .Where(e => e.IsActive)
+                .Include(e => e.JobCategory).Include(e => e.Branch).Include(e => e.Absences).ToListAsync();
+
+            var absenteeProfile = employees.GroupBy(e => e.JobCategory).Select(g => new AbsenteeProfileViewModel { JobCategory = g.Key, AverageHoursOfAbsence = g.Average(e => e.Absences.Sum(a => a.NumberOfHours)), TotalEmployees = g.Count() });
+            
+            return View(absenteeProfile);
         }
     }
 }
