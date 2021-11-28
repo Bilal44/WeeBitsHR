@@ -17,14 +17,14 @@
 <br />
 <h2 class="text-center">Average Payrate by Gender</h2>
 <hr />
-<table class="table">
+<table class="table" id="gender-table">
 	<thead>
 		<tr>
 			<th>
 				Gender
 			</th>
 			<th>
-				Average Payrate
+				Average Payrate (GBP)
 			</th>
 			<th>
 				Total Employees
@@ -49,17 +49,19 @@
 </table>
 
 <br />
+<div id="gender-chart"></div>
+<br />
 
 <h2 class="text-center">Average Payrate by Role</h2>
 <hr />
-<table class="table">
+<table class="table" id="role-table">
 	<thead>
 		<tr>
 			<th>
 				Job Role
 			</th>
 			<th>
-				Average Payrate
+				Average Payrate (GBP)
 			</th>
 			<th>
 				Total Employees
@@ -82,6 +84,14 @@
 		}
 	</tbody>
 </table>
+<br />
+<div id="role-chart"></div>
+<br />
+
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/plugins/datatables/dataTables.js"></script>
 <script src="~/js/employees.js"></script>
+<script src="~/lib/plugins/highcharts/highcharts.js"></script>
+<script src="~/lib/plugins/highcharts/data.js"></script>
+<script src="~/lib/plugins/highcharts/exporting.js"></script>
+<script src="~/js/payrate-charts.js"></script>

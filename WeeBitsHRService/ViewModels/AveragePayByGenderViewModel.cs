@@ -7,7 +7,6 @@ namespace WeeBitsHRService.ViewModels
     {
         public Gender Gender { get; set; }
 
-        [DataType(DataType.Currency)]
         public decimal AveragePay { get; set; }
 
         public int TotalEmployees { get; set; }
