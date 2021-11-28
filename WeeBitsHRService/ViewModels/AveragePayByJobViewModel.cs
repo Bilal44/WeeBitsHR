@@ -7,6 +7,7 @@ namespace WeeBitsHRService.ViewModels
     {
         public JobCategory JobCategory { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:#.##}")]
         public decimal AveragePay { get; set; }
 
         public int TotalEmployees { get; set; }

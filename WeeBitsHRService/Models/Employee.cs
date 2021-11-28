@@ -43,15 +43,15 @@ namespace WeeBitsHRService.Models
         [ForeignKey("JobCategory")]
         public int JobCategoryId { get; set; }
         [Display(Name = "Job Category")]
-        public JobCategory JobCategory { get; set; }
+        public virtual JobCategory JobCategory { get; set; }
 
         [Required]
         [ForeignKey("Branch")]
         public int BranchId { get; set; }
 
-        public Branch Branch { get; set; }
+        public virtual Branch Branch { get; set; }
         
-        public ICollection<Absence> Absences { get; set; }
+        public virtual ICollection<Absence> Absences { get; set; }
     }
 
     public enum Gender { Female, Male, Other }

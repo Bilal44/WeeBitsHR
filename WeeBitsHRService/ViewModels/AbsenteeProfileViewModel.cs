@@ -8,7 +8,8 @@ namespace WeeBitsHRService.ViewModels
         [Display(Name = "Job Category")]
         public JobCategory JobCategory { get; set; }
 
-        [Display(Name = "Average Hours Of Absence")]
+        [Display(Name = "Average Hours of Absence")]
+        [DisplayFormat(DataFormatString = "{0:#.##}")]
         public double AverageHoursOfAbsence { get; set; }
 
         [Display(Name = "Total Employees")]

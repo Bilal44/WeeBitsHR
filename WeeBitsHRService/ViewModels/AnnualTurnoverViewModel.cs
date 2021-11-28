@@ -14,6 +14,8 @@ namespace WeeBitsHRService.ViewModels
         [Display(Name = "Employees Left")]
         public int EmployeesLeft { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:#.##}")]
+
         [Display(Name = "Annual Staff Turnover Ratio")]
         public double StaffTurnoverRatio { get; set; }
 
