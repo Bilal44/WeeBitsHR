@@ -84,9 +84,9 @@ namespace WeeBitsHRService.Areas.Identity.Pages.Account
             public bool RememberMe { get; set; }
         }
 
-        public async Task<RedirectToActionResult> OnGetAsync()
+        public async Task<IActionResult> OnGetAsync()
         {
-            return RedirectToAction("Index");
+            return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
@@ -101,7 +101,7 @@ namespace WeeBitsHRService.Areas.Identity.Pages.Account
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
-                {
+                { 
                     _logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);
                 }

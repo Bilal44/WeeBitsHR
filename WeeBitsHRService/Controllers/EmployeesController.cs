@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
@@ -12,6 +13,7 @@ using WeeBitsHRService.Models;
 
 namespace WeeBitsHRService.Controllers
 {
+    [Authorize(Roles = "Manager")]
     public class EmployeesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -72,6 +74,7 @@ namespace WeeBitsHRService.Controllers
             var result = await _userManager.CreateAsync(employee, "Default-pass-123");
             if (result.Succeeded)
             {
+                await _userManager.AddToRoleAsync(employee, "Employee");
                 return RedirectToAction("Index");
             }
 

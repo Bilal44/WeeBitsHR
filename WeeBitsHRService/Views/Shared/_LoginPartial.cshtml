@@ -1,25 +1,27 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
 
 <ul class="navbar-nav">
 	@if (SignInManager.IsSignedIn(User))
 	{
-		<li class="nav-item ms-1">
-			<a class="btn btn-info" asp-controller="Reports" asp-action="CurrentEmployees" title="Current Employees"><i class="fas fa-users"></i> Current Employees</a>
-		</li>
-		<li class="nav-item ms-1">
-			<a class="btn btn-info" asp-controller="Reports" asp-action="EmployeesDemographics" asp-route-gender="0" asp-route-startAge="22" asp-route-endAge="37" title="Employee Demographics"><i class="fas fa-table"></i> Employees Demographics</a>
-		</li>
-		<li class="nav-item ms-1">
-			<a class="btn btn-info" asp-controller="Reports" asp-action="AveragePayrate" title="Average Payrate"><i class="fas fa-chart-bar"></i> Average Payrate</a>
-		</li>
-		<li class="nav-item ms-1">
-			<a class="btn btn-info" asp-controller="Reports" asp-action="AbsenteeProfile" asp-route-startDate="2021-01-01" asp-route-endDate="2021-07-07" title="Absentee Profile"><i class="fas fa-address-book"></i> Absentee Profile</a>
-		</li>
-		<li class="nav-item ms-1">
-			<a class="btn btn-info" asp-controller="Reports" asp-action="AnnualStaffTurnover" asp-route-year="2021" title="Annual Staff Turnover"><i class="fas fa-people-arrows"></i> Annual Staff Turnover</a>
-		</li>
+		if (User.IsInRole("Manager"))
+		{
+			<li class="nav-item ms-1">
+				<a class="btn btn-info" asp-controller="Reports" asp-action="CurrentEmployees" title="Current Employees"><i class="fas fa-users"></i> Current Employees</a>
+			</li>
+			<li class="nav-item ms-1">
+				<a class="btn btn-info" asp-controller="Reports" asp-action="EmployeesDemographics" asp-route-gender="0" asp-route-startAge="22" asp-route-endAge="37" title="Employee Demographics"><i class="fas fa-table"></i> Employees Demographics</a>
+			</li>
+			<li class="nav-item ms-1">
+				<a class="btn btn-info" asp-controller="Reports" asp-action="AveragePayrate" title="Average Payrate"><i class="fas fa-chart-bar"></i> Average Payrate</a>
+			</li>
+			<li class="nav-item ms-1">
+				<a class="btn btn-info" asp-controller="Reports" asp-action="AbsenteeProfile" asp-route-startDate="2021-01-01" asp-route-endDate="2021-07-07" title="Absentee Profile"><i class="fas fa-address-book"></i> Absentee Profile</a>
+			</li>
+			<li class="nav-item ms-1">
+				<a class="btn btn-info" asp-controller="Reports" asp-action="AnnualStaffTurnover" asp-route-year="2021" title="Annual Staff Turnover"><i class="fas fa-people-arrows"></i> Annual Staff Turnover</a>
+			</li>
+		}
 		<li class="nav-item ms-1">
 			<a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Welcome, @User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"))!</a>
 		</li>
