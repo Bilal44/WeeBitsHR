@@ -1,13 +1,16 @@
 ﻿@model IEnumerable<WeeBitsHRService.Models.Employee>
 
 @{
-	ViewData["Title"] = "All WeeBits Computer Employees";
+	var startAge = ViewData["StartAge"] != null ? ViewData["StartAge"] : 0;
+	var endAge = ViewData["EndAge"] != null ? ViewData["EndAge"] : 99;
+	ViewData["Title"] = "Current " + ViewData["Gender"] + " Employees";
+
+	<link rel="stylesheet" href="~/lib/plugins/datatables/dataTables.css" />
+	<link rel="stylesheet" href="~/lib/plugins/datatables/datatables-reports.min.css" />
+
+	<h1 class="text-center">@ViewData["Title"]</h1>
+	<h2 class="text-center">Age range: @startAge - @endAge</h2>
 }
-<link rel="stylesheet" href="~/lib/plugins/datatables/dataTables.css" />
-<link rel="stylesheet" href="~/lib/plugins/datatables/datatables-reports.min.css" />
-
-<h1 class="text-center">@ViewData["Title"]</h1>
-
 <br />
 <h2 class="text-center">Employee Count: @ViewData["Count"] - <a href="#" id="reveal" class="link-primary">click here to reveal all employees meeting the criteria</a>.</h2>
 <div id="demographics" class="d-none">

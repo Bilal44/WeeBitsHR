@@ -3,8 +3,19 @@
 <link rel="stylesheet" href="~/lib/plugins/datatables/dataTables.css" />
 <link rel="stylesheet" href="~/lib/plugins/datatables/datatables-reports.min.css" />
 
-<br />
-<h2 class="text-center">Absentee Profile by Job Category</h2>
+@{
+	var startDate = ViewData["StartDate"] != null ? ViewData["StartDate"] : "01/01/2000";
+	var endDate = ViewData["EndDate"] != null ? ViewData["EndDate"] : DateTime.Now.ToShortDateString();
+	ViewData["Title"] = "Absentee Profile by Job Category";
+
+	<link rel="stylesheet" href="~/lib/plugins/datatables/dataTables.css" />
+	<link rel="stylesheet" href="~/lib/plugins/datatables/datatables-reports.min.css" />
+
+	<h1 class="text-center">@ViewData["Title"]</h1>
+	<h2 class="text-center"> @startDate - @endDate</h2>
+}
+
+
 <hr />
 <table class="table">
 	<thead>
