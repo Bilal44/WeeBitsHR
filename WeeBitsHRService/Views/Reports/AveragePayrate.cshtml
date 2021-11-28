@@ -7,12 +7,12 @@
 	var avgbyJobCategory = ViewData["AvgPaybyJob"] as IEnumerable<AveragePayByJobViewModel>;
 }
 @{
-	ViewData["Title"] = "Average Payrate Report";
+	ViewData["Title"] = "Average Payrate Reports";
 }
 <link rel="stylesheet" href="~/lib/plugins/datatables/dataTables.css" />
 <link rel="stylesheet" href="~/lib/plugins/datatables/datatables-reports.min.css" />
 
-<h1 class="text-center">Average Payrate Report @(ViewData["Branch"] != null ? (@ViewData["Branch"]) : "")</h1>
+<h1 class="text-center">Average Payrate Reports @(ViewData["Branch"] == null ? "" : "(" + @ViewData["Branch"] + ")")</h1>
 
 <br />
 <h2 class="text-center">Average Payrate by Gender</h2>
@@ -26,16 +26,22 @@
 			<th>
 				Average Payrate
 			</th>
+			<th>
+				Total Employees
+			</th>
 	</thead>
 	<tbody>
 		@foreach (var item in avgbyGender)
 		{
 			<tr>
 				<td>
-					@item.Gender
+					@Html.DisplayFor(modelItem => item.Gender)
 				</td>
 				<td>
-					@item.AveragePay
+					@Html.DisplayFor(modelItem => item.AveragePay)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.TotalEmployees)
 				</td>
 			</tr>
 		}
@@ -55,16 +61,22 @@
 			<th>
 				Average Payrate
 			</th>
+			<th>
+				Total Employees
+			</th>
 	</thead>
 	<tbody>
 		@foreach (var item in avgbyJobCategory)
 		{
 			<tr>
 				<td>
-					@item.JobCategory.Name
+					@Html.DisplayFor(modelItem => item.JobCategory.Name)
 				</td>
 				<td>
-					@item.AveragePay
+					@Html.DisplayFor(modelItem => item.AveragePay)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.TotalEmployees)
 				</td>
 			</tr>
 		}

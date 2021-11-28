@@ -77,3 +77,8 @@ footer {
 .w-497 {
     width: 49.7% !important;
 }
+
+.navbar-brand {
+    font-size: 1.3rem;
+    font-weight: 600;
+}

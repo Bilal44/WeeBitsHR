@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<WeeBitsHRService.Models.Employee>
 
 @{
-    ViewData["Title"] = "All WeeBits Computer Employees";
+    ViewData["Title"] = ViewData["Branch"] != null ? "Current WeeBits Employees (" + ViewData["Branch"] + ")" : "All Current WeeBits Employees";
 }
 <link rel="stylesheet" href="~/lib/plugins/datatables/dataTables.css" />
 <link rel="stylesheet" href="~/lib/plugins/datatables/datatables-reports.min.css" />
@@ -19,10 +19,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
+                Name
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Email)
@@ -31,7 +28,7 @@
                 Phone No.
             </th>
             <th>
-                Payroll No.
+                Payroll
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.IsActive)
@@ -67,10 +64,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
+                @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
@@ -82,7 +76,7 @@
                 @Html.DisplayFor(modelItem => item.PayrollNumber)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IsActive)
+                @Html.Raw(item.IsActive ? "<i class='far fa-2x fa-check-circle text-success'></i>" : "<i class='far fa-2x fa-minus-circle text-danger'></i>")
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Position)

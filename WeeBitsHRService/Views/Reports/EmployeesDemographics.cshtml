@@ -12,23 +12,14 @@
 	<h2 class="text-center">Age range: @startAge - @endAge</h2>
 }
 <br />
-<h2 class="text-center">Employee Count: @ViewData["Count"] - <a href="#" id="reveal" class="link-primary">click here to reveal all employees meeting the criteria</a>.</h2>
+<h2 class="text-center">Employee Count: @ViewData["Count"] - <a href="javascript:void(0)" id="reveal" class="link-primary">click here to reveal all employees meeting the criteria</a>.</h2>
+<br />
 <div id="demographics" class="d-none">
-	<p>
-		<br />
-		<a class="btn btn-lg btn-success" asp-action="Create"><i class="fas fa-plus"></i> Add Employee</a>
-		<br />
-	</p>
-
-	<br />
 	<table id="list" class="table hide">
 		<thead>
 			<tr>
 				<th>
-					@Html.DisplayNameFor(model => model.FirstName)
-				</th>
-				<th>
-					@Html.DisplayNameFor(model => model.LastName)
+					Name
 				</th>
 				<th>
 					@Html.DisplayNameFor(model => model.Email)
@@ -37,7 +28,7 @@
 					Phone No.
 				</th>
 				<th>
-					Payroll No.
+					Payroll
 				</th>
 				<th>
 					@Html.DisplayNameFor(model => model.IsActive)
@@ -61,7 +52,7 @@
 					Leave
 				</th>
 				<th>
-					Job Cat
+					Dep
 				</th>
 				<th>
 					@Html.DisplayNameFor(model => model.Branch)
@@ -74,10 +65,7 @@
 			{
 				<tr>
 					<td>
-						@Html.DisplayFor(modelItem => item.FirstName)
-					</td>
-					<td>
-						@Html.DisplayFor(modelItem => item.LastName)
+						@Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)
 					</td>
 					<td>
 						@Html.DisplayFor(modelItem => item.Email)

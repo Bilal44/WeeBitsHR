@@ -30,6 +30,9 @@ namespace WeeBitsHRService.Controllers
             var employees = await _context.Employees
                 .Where(e => (!branchId.HasValue || e.BranchId == branchId) && e.IsActive)
                 .Include(e => e.JobCategory).Include(e => e.Branch).ToListAsync();
+
+            ViewData["Branch"] = branchId != null || branchId != 0 ? _context.Branches.FirstOrDefault(b => b.Id == branchId)?.Region : "";
+
             return View(employees);
         }
 
@@ -59,8 +62,8 @@ namespace WeeBitsHRService.Controllers
                 && e.IsActive)
                 .Include(e => e.JobCategory).ToListAsync();
 
-            ViewData["AvgPaybyGender"] = employees.GroupBy(e => e.Gender).Select(g => new AveragePayByGenderViewModel { Gender = g.Key, AveragePay = g.Average(e => e.Salary) });
-            ViewData["AvgPaybyJob"] = employees.GroupBy(e => e.JobCategory).Select(g => new AveragePayByJobViewModel { JobCategory = g.Key, AveragePay = g.Average(e => e.Salary) });
+            ViewData["AvgPaybyGender"] = employees.GroupBy(e => e.Gender).Select(g => new AveragePayByGenderViewModel { Gender = g.Key, AveragePay = g.Average(e => e.Salary), TotalEmployees = g.Count() });
+            ViewData["AvgPaybyJob"] = employees.GroupBy(e => e.JobCategory).Select(g => new AveragePayByJobViewModel { JobCategory = g.Key, AveragePay = g.Average(e => e.Salary), TotalEmployees = g.Count() });
             ViewData["Branch"] = branchId != null || branchId != 0 ? _context.Branches.FirstOrDefault(b => b.Id == branchId)?.Region : "";
 
             return View(employees);
