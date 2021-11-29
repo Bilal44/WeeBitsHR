@@ -31,7 +31,6 @@
 					<input asp-for="Email" class="form-control" placeholder=" " />
 					<label asp-for="Email" class="control-label"></label>
 					<span asp-validation-for="Email" class="text-danger"></span>
-					<span asp-validation-for="UserName" class="text-danger"></span>
 				</div>
 				<div class="form-floating">
 					<input asp-for="AddressLine1" class="form-control" placeholder=" " />
@@ -89,7 +88,7 @@
 					<span asp-validation-for="Gender" class="text-danger"></span>
 				</div>
 				<div class="form-floating">
-					<input asp-for="JoinDate" class="form-control" placeholder=" " min="2020-03-01" max="@DateTime.Now.Date.ToString("yyyy-MM-dd")" />
+					<input asp-for="JoinDate" class="form-control" placeholder=" " min="2000-01-01" max="@DateTime.Now.Date.ToString("yyyy-MM-dd")" />
 					<label asp-for="JoinDate" class="control-label"></label>
 					<span asp-validation-for="JoinDate" class="text-danger"></span>
 				</div>

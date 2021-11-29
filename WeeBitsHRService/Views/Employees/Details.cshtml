@@ -1,137 +1,139 @@
 ﻿@model WeeBitsHRService.Models.Employee
 
 @{
-    ViewData["Title"] = "Details";
+	ViewData["Title"] = "Details";
 }
 
 <h1 class="text-center">Employee Details</h1>
 
 <div>
-    <h4>@Model?.FirstName @Model?.LastName</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AddressLine1)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AddressLine1)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AddressLine2)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AddressLine2)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Town)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Town)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PostCode)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PostCode)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Country)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Country)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PayrollNumber)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PayrollNumber)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IsActive)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IsActive)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Position)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Position)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Salary)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Salary)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DOB)
-        </dt>
-        <dd class = "col-sm-10">
-            @Model.DOB.ToShortDateString()
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Gender)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Gender)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.JoinDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Model.JoinDate.ToShortDateString()
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LeaveDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Model.LeaveDate?.ToShortDateString()
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.JobCategory)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.JobCategory.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Branch)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Branch.Region)
-        </dd>
-    </dl>
-</div>
-<div class="col-md-4">
-    <a class="btn btn-primary" asp-action="Index">Back to Employee List</a>
+	<h4 class="text-center">@Model?.FirstName @Model?.LastName</h4>
+	<hr />
+	<center>
+		<div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12 text-start">
+			<dl class="row">
+				<dt class="col-sm-4">
+					@Html.DisplayNameFor(model => model.Title)
+				</dt>
+				<dd class="col-sm-8">
+					@Html.DisplayFor(model => model.Title)
+				</dd>
+				<dt class="col-sm-4">
+					@Html.DisplayNameFor(model => model.FirstName)
+				</dt>
+				<dd class="col-sm-8">
+					@Html.DisplayFor(model => model.FirstName)
+				</dd>
+				<dt class="col-sm-4">
+					@Html.DisplayNameFor(model => model.LastName)
+				</dt>
+				<dd class="col-sm-8">
+					@Html.DisplayFor(model => model.LastName)
+				</dd>
+				<dt class="col-sm-4">
+					@Html.DisplayNameFor(model => model.Email)
+				</dt>
+				<dd class="col-sm-8">
+					@Html.DisplayFor(model => model.Email)
+				</dd>
+				<dt class="col-sm-4">
+					@Html.DisplayNameFor(model => model.AddressLine1)
+				</dt>
+				<dd class="col-sm-8">
+					@Html.DisplayFor(model => model.AddressLine1)
+				</dd>
+				<dt class="col-sm-4">
+					@Html.DisplayNameFor(model => model.AddressLine2)
+				</dt>
+				<dd class="col-sm-8">
+					@Html.DisplayFor(model => model.AddressLine2)
+				</dd>
+				<dt class="col-sm-4">
+					@Html.DisplayNameFor(model => model.Town)
+				</dt>
+				<dd class="col-sm-8">
+					@Html.DisplayFor(model => model.Town)
+				</dd>
+				<dt class="col-sm-4">
+					@Html.DisplayNameFor(model => model.PostCode)
+				</dt>
+				<dd class="col-sm-8">
+					@Html.DisplayFor(model => model.PostCode)
+				</dd>
+				<dt class="col-sm-4">
+					@Html.DisplayNameFor(model => model.Country)
+				</dt>
+				<dd class="col-sm-8">
+					@Html.DisplayFor(model => model.Country)
+				</dd>
+				<dt class="col-sm-4">
+					@Html.DisplayNameFor(model => model.PhoneNumber)
+				</dt>
+				<dd class="col-sm-8">
+					@Html.DisplayFor(model => model.PhoneNumber)
+				</dd>
+				<dt class="col-sm-4">
+					@Html.DisplayNameFor(model => model.PayrollNumber)
+				</dt>
+				<dd class="col-sm-8">
+					@Html.DisplayFor(model => model.PayrollNumber)
+				</dd>
+				<dt class="col-sm-4">
+					@Html.DisplayNameFor(model => model.IsActive)
+				</dt>
+				<dd class="col-sm-8">
+					@Html.Raw(Model.IsActive ? "<i class='far fa-1x fa-check-circle text-success'></i>" : "<i class='far fa-1x fa-times-circle text-danger'></i>")
+				</dd>
+				<dt class="col-sm-4">
+					@Html.DisplayNameFor(model => model.Position)
+				</dt>
+				<dd class="col-sm-8">
+					@Html.DisplayFor(model => model.Position)
+				</dd>
+				<dt class="col-sm-4">
+					@Html.DisplayNameFor(model => model.Salary)
+				</dt>
+				<dd class="col-sm-8">
+					@Html.DisplayFor(model => model.Salary)
+				</dd>
+				<dt class="col-sm-4">
+					@Html.DisplayNameFor(model => model.DOB)
+				</dt>
+				<dd class="col-sm-8">
+					@Model.DOB.ToShortDateString()
+				</dd>
+				<dt class="col-sm-4">
+					@Html.DisplayNameFor(model => model.Gender)
+				</dt>
+				<dd class="col-sm-8">
+					@Html.DisplayFor(model => model.Gender)
+				</dd>
+				<dt class="col-sm-4">
+					@Html.DisplayNameFor(model => model.JoinDate)
+				</dt>
+				<dd class="col-sm-8">
+					@Model.JoinDate.ToShortDateString()
+				</dd>
+				<dt class="col-sm-4">
+					@Html.DisplayNameFor(model => model.LeaveDate)
+				</dt>
+				<dd class="col-sm-8">
+					@Model.LeaveDate?.ToShortDateString()
+				</dd>
+				<dt class="col-sm-4">
+					@Html.DisplayNameFor(model => model.JobCategory)
+				</dt>
+				<dd class="col-sm-8">
+					@Html.DisplayFor(model => model.JobCategory.Name)
+				</dd>
+				<dt class="col-sm-4">
+					@Html.DisplayNameFor(model => model.Branch)
+				</dt>
+				<dd class="col-sm-8">
+					@Html.DisplayFor(model => model.Branch.Region)
+				</dd>
+			</dl>
+			<a class="w-100 btn btn-primary" asp-action="Index">Back to Employee List</a>
+		</div>
+	</center>
 </div>

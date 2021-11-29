@@ -1,16 +1,15 @@
 ﻿@model IEnumerable<WeeBitsHRService.Models.Employee>
 
-@{
-	var startAge = ViewData["StartAge"] != null ? ViewData["StartAge"] : 0;
-	var endAge = ViewData["EndAge"] != null ? ViewData["EndAge"] : 99;
-	ViewData["Title"] = "Current " + ViewData["Gender"] + " Employees";
+@{ViewData["Title"] = "Current " + @ViewData["Gender"] + " Employees";}
 
-	<link rel="stylesheet" href="~/lib/plugins/datatables/dataTables.css" />
-	<link rel="stylesheet" href="~/lib/plugins/datatables/datatables-reports.min.css" />
+<link rel="stylesheet" href="~/lib/plugins/datatables/dataTables.css" />
+<link rel="stylesheet" href="~/lib/plugins/datatables/datatables-reports.min.css" />
 
-	<h1 class="text-center">@ViewData["Title"]</h1>
-	<h2 class="text-center">Age range: @startAge - @endAge</h2>
-}
+<h1 class="text-center">@ViewData["Title"]</h1>
+<h2 class="text-center">Age range: @ViewData["StartAge"] - @ViewData["EndAge"]</h2>
+
+<br />
+<partial name="_StatusMessage" />
 <br />
 <h2 class="text-center">Employee Count: @ViewData["Count"] - <a href="javascript:void(0)" id="reveal" class="link-primary">click here to reveal all employees meeting the criteria</a>.</h2>
 <br />
@@ -77,7 +76,7 @@
 						@Html.DisplayFor(modelItem => item.PayrollNumber)
 					</td>
 					<td>
-						@Html.Raw(item.IsActive ? "<i class='far fa-2x fa-check-circle text-success'></i>" : "<i class='far fa-2x fa-minus-circle text-danger'></i>")
+						@Html.Raw(item.IsActive ? "<i class='far fa-2x fa-check-circle text-success'></i>" : "<i class='far fa-2x fa-times-circle text-danger'></i>")
 					</td>
 					<td>
 						@Html.DisplayFor(modelItem => item.Position)
