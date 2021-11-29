@@ -7,7 +7,7 @@
                 var url = window.location.protocol + "//" + window.location.host;
 
                 // Store report name and date for export
-                var reportName = document.title.replace(' ', 's Report') + " " +
+                var reportName = document.title.replace('- WeeBits Computer - HR', ' ') +
                     new Date().toLocaleDateString('en-GB', {
                         day: '2-digit', month: 'short', year: 'numeric'
                     }).replace(/ /g, '-');

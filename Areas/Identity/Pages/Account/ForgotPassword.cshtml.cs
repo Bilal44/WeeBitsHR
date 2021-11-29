@@ -31,6 +31,9 @@ namespace WeeBitsHRService.Areas.Identity.Pages.Account
 		[BindProperty]
 		public InputModel Input { get; set; }
 
+		[TempData]
+		public string StatusMessage { get; set; }
+
 		/// <summary>
 		///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
 		///     directly from your code. This API may change or be removed in future releases.
@@ -51,10 +54,10 @@ namespace WeeBitsHRService.Areas.Identity.Pages.Account
 			if (ModelState.IsValid)
 			{
 				var user = await _userManager.FindByEmailAsync(Input.Email);
-				if (user == null || !(await _userManager.IsEmailConfirmedAsync(user)))
+				if (user == null)
 				{
-					// Don't reveal that the user does not exist or is not confirmed
-					return RedirectToPage("./ForgotPasswordConfirmation");
+					StatusMessage = $"Error: No user with email {Input.Email} exists, please check your email address and try again.";
+					return Page();
 				}
 
 				// For more information on how to enable account confirmation and password reset please
@@ -72,7 +75,8 @@ namespace WeeBitsHRService.Areas.Identity.Pages.Account
 					"Reset Password",
 					$"Please reset your password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
-				return RedirectToPage("./ForgotPasswordConfirmation");
+				StatusMessage = $"Password reset link successfully sent to {Input.Email}, please check your email to continue.";
+				return Page();
 			}
 
 			return Page();

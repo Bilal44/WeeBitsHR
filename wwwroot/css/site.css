@@ -101,3 +101,7 @@ main {
         display: grid;
     }
 }
+
+tr {
+    vertical-align: middle; 
+}
