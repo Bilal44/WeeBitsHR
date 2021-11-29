@@ -50,7 +50,7 @@ namespace WeeBitsHRService.Models
         public int BranchId { get; set; }
 
         public virtual Branch Branch { get; set; }
-        
+
         public virtual ICollection<Absence> Absences { get; set; }
     }
 

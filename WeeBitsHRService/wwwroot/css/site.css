@@ -21,7 +21,7 @@ body {
 
 .splash {
     background: url("../img/main.jpg");
-    height: 80vh;
+    height: 75vh;
     background-position: center;
     background-size: cover;
 }
@@ -85,4 +85,19 @@ footer {
 
 main {
     min-height: 85vh;
+}
+
+#copyright-text {
+    margin-left: 8.5%;
+}
+
+@media (max-width: 540px) {
+    #copyright-text {
+        font-size: small;
+        margin-left: 0;
+    }
+
+    #footer-text {
+        display: grid;
+    }
 }

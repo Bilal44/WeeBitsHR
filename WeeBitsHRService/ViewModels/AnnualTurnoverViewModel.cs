@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using WeeBitsHRService.Models;
 
 namespace WeeBitsHRService.ViewModels
 {

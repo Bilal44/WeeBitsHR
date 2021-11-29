@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WeeBitsHRService.Data;
 using WeeBitsHRService.Models;
@@ -74,7 +67,7 @@ namespace WeeBitsHRService.Controllers
         {
             var employees = _context.Employees
                 .Include(e => e.JobCategory).Where(e => e.IsActive).Include(e => e.Absences
-                .Where(a=> !startDate.HasValue || a.DateofAbsence >= startDate
+                .Where(a => !startDate.HasValue || a.DateofAbsence >= startDate
                 && (!endDate.HasValue || a.DateofAbsence <= endDate))).ToList();
 
             var absenteeProfile = employees.GroupBy(e => e.JobCategory).Select(g => new AbsenteeProfileViewModel { JobCategory = g.Key, AverageHoursOfAbsence = g.Average(e => e.Absences.Sum(a => a.NumberOfHours)), TotalEmployees = g.Count() });

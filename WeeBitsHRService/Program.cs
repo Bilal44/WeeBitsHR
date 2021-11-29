@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 using WeeBitsHRService.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,9 +30,14 @@ else
     app.UseHsts();
 }
 
+var cultureInfo = new CultureInfo("en-US");
+cultureInfo.NumberFormat.CurrencySymbol = "£";
+
+CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
 
 app.UseAuthentication();
