@@ -101,7 +101,7 @@ namespace WeeBitsHRService.Controllers
 				{
 					await _userManager.AddToRoleAsync(employee, "Employee");
 					TempData["SM"] = $"Successfully added '{employee.FirstName} {employee.LastName} ({employee.PayrollNumber})' as a new employee.";
-					return RedirectToAction("Index");
+					return RedirectToAction("CurrentEmployees","Reports");
 				}
 			}
 
