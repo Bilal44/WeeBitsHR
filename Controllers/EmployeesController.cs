@@ -93,6 +93,9 @@ namespace WeeBitsHRService.Controllers
 			if (TempData["Error"] == null)
 			{
 				await _userStore.SetUserNameAsync(employee, employee.Email, CancellationToken.None);
+				employee.CreatedAt = DateTime.Now;
+				var currentUser = await _userManager.GetUserAsync(User);
+				employee.CreatedBy = currentUser.Id;
 				var result = await _userManager.CreateAsync(employee, "Default-pass-123");
 				if (result.Succeeded)
 				{

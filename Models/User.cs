@@ -8,8 +8,10 @@ namespace WeeBitsHRService.Models
 	{
 		public override string Id { get => base.Id; set => base.Id = value; }
 		public override string UserName { get => base.UserName; set => base.UserName = value; }
+        public DateTime CreatedAt { get; set; }
+        public string CreatedBy { get; set; }
 
-		[Required]
+        [Required]
 		[StringLength(20)]
 		public string Title { get; set; }
 
