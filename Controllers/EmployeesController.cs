@@ -22,8 +22,14 @@ namespace WeeBitsHRService.Controllers
 			_userStore = userStore;
 		}
 
-		// GET: Employees
+		// GET: Load Manager Menu
 		public async Task<IActionResult> Index()
+		{
+			return View();
+		}
+
+		// GET: All Employees
+		public async Task<IActionResult> All()
 		{
 			var employees = await _context.Employees.Include(e => e.JobCategory).Include(e => e.Branch).ToListAsync();
 			return View(employees);

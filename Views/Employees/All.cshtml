@@ -1,0 +1,116 @@
+﻿@model IEnumerable<WeeBitsHRService.Models.Employee>
+
+@{
+    ViewData["Title"] = "All WeeBits Computer Employees";
+}
+<link rel="stylesheet" href="~/lib/plugins/datatables/dataTables.css" />
+<link rel="stylesheet" href="~/lib/plugins/datatables/datatables-reports.min.css" />
+
+<h1 class="text-center">@ViewData["Title"]</h1>
+
+<partial name="_StatusMessage" />
+
+<p>
+    <br />
+    <a class="btn btn-lg btn-success" asp-action="Create"><i class="fas fa-plus"></i> Add Employee</a>
+    <br />
+</p>
+
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                Phone No.
+            </th>
+            <th>
+                Payroll
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Position)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salary)
+            </th>
+             <th>
+                DOB
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                Join
+            </th>
+            <th>
+                Leave
+            </th>
+            <th>
+                Job Cat
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Branch)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PayrollNumber)
+            </td>
+            <td>
+                @Html.Raw(item.IsActive ? "<i class='far fa-2x fa-check-circle text-success'></i>" : "<i class='far fa-2x fa-times-circle text-danger'></i>")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DOB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JoinDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LeaveDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobCategory.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Branch.Region)
+            </td>
+            <td>
+                <a class="btn btn-sm btn-primary" asp-action="Details" asp-route-email="@item.Email"><i class="fas fa-info-circle"></i> Details</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/plugins/datatables/dataTables.js"></script>
+<script src="~/js/employees.js"></script>

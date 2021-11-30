@@ -1,4 +1,4 @@
-﻿# WeeBits Computer Component Supply
+﻿# WeeBits Computer Component Supply Service
 
 The WeeBits Computer Component Supply Service is an established computer component
 wholesale supplier of high-quality computer components for both the computer trade and 

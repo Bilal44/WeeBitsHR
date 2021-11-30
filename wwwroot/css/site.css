@@ -105,3 +105,26 @@ main {
 tr {
     vertical-align: middle; 
 }
+
+.card .align-self-center {
+    font-size: xx-large;
+}
+
+.btn-panel {
+    display: grid !important;
+    margin-bottom: 0.5rem;
+}
+
+.panel-icon {
+    align-self: center !important;
+    padding-right: 1rem !important;
+}
+
+.card {
+    margin: 1.5rem;
+    border: none;
+    color: white;
+    background: #2D3436;
+    border-radius: 4px;
+    box-shadow: 0 10px 40px 0 rgb(62 57 107 / 7%), 0 2px 9px 0 rgb(62 57 107 / 6%);
+}
