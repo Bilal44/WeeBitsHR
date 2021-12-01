@@ -60,6 +60,11 @@ footer {
     margin-left: 0;
 }
 
+.kpi {
+    border: outset;
+    border-radius: 15px;
+}
+
 #DataTables_Table_0_length {
     float: left;
 }
