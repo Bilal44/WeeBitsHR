@@ -85,7 +85,7 @@ The Manager shall be able to:
 			</td>
 			<td style="width:253px;"><p>I want a button on the secure login screen</p>
 			</td>
-			<td style="width:386px;"><p>To submitmycredentials and access restricted content</p>
+			<td style="width:386px;"><p>To submit my credentials and access restricted content</p>
 			</td>
 			<td style="width:32px;"><p align="center">:heavy_check_mark:</p>
 			</td>
@@ -133,7 +133,7 @@ The Manager shall be able to:
 			</td>
 			<td style="width:81px;"><p>As a manager</p>
 			</td>
-			<td style="width:253px;"><p>I want tohave an add employee screen withinput fields</p>
+			<td style="width:253px;"><p>I want to have an add employee screen with input fields</p>
 			</td>
 			<td style="width:386px;"><p>To enter information for a new employee</p>
 			</td>
@@ -147,7 +147,7 @@ The Manager shall be able to:
 			</td>
 			<td style="width:253px;"><p>I want a button on the add employee screen</p>
 			</td>
-			<td style="width:386px;"><p>To submit the employee data and addthemas a new staff member</p>
+			<td style="width:386px;"><p>To submit the employee data and add them as a new staff member</p>
 			</td>
 			<td style="width:32px;"><p align="center">:heavy_check_mark:</p>
 			</td>
@@ -171,7 +171,7 @@ The Manager shall be able to:
 			</td>
 			<td style="width:253px;"><p>I want to print a list of all current employees</p>
 			</td>
-			<td style="width:386px;"><p>To produce a hardcopy of the employee list</p>
+			<td style="width:386px;"><p>To produce a hard copy of the employee list</p>
 			</td>
 			<td style="width:32px;"><p align="center">:heavy_check_mark:</p>
 			</td>
@@ -181,7 +181,7 @@ The Manager shall be able to:
 			</td>
 			<td style="width:81px;"><p>As a manager</p>
 			</td>
-			<td style="width:253px;"><p>I wanted to view a list of current employees for a region</p>
+			<td style="width:253px;"><p>I want to view a list of current employees for a region</p>
 			</td>
 			<td style="width:386px;"><p>To access staff information related to a region</p>
 			</td>
@@ -193,9 +193,9 @@ The Manager shall be able to:
 			</td>
 			<td style="width:81px;"><p>As a manager</p>
 			</td>
-			<td style="width:253px;"><p>I wanted to print a list of current employees for a region</p>
+			<td style="width:253px;"><p>I want to print a list of current employees for a region</p>
 			</td>
-			<td style="width:386px;"><p>To produce a hardcopy of the region employee list</p>
+			<td style="width:386px;"><p>To produce a hard copy of the region employee list</p>
 			</td>
 			<td style="width:32px;"><p align="center">:heavy_check_mark:</p>
 			</td>
@@ -221,7 +221,7 @@ The Manager shall be able to:
 			</td>
 			<td style="width:253px;height:20px;"><p>I want to print number of employees filtered by age</p>
 			</td>
-			<td style="width:386px;height:20px;"><p>To produce a hardcopy of age group report</p>
+			<td style="width:386px;height:20px;"><p>To produce a hard copy of age group report</p>
 			</td>
 			<td style="width:32px;height:20px;"><p align="center">:heavy_check_mark:</p>
 			</td>
@@ -245,7 +245,7 @@ The Manager shall be able to:
 			</td>
 			<td style="width:253px;"><p>I want to print number of employees filtered by gender</p>
 			</td>
-			<td style="width:386px;"><p>To produce a hardcopy of gender report</p>
+			<td style="width:386px;"><p>To produce a hard copy of gender report</p>
 			</td>
 			<td style="width:32px;"><p align="center">:heavy_check_mark:</p>
 			</td>
@@ -269,7 +269,7 @@ The Manager shall be able to:
 			</td>
 			<td style="width:253px;"><p>I want to print average rates of pay by role</p>
 			</td>
-			<td style="width:386px;"><p>To produce a hardcopy of role payrates report</p>
+			<td style="width:386px;"><p>To produce a hard copy of role payrates report</p>
 			</td>
 			<td style="width:32px;"><p align="center">:heavy_check_mark:</p>
 			</td>
@@ -293,7 +293,7 @@ The Manager shall be able to:
 			</td>
 			<td style="width:253px;"><p>I want to print average rates of pay by gender</p>
 			</td>
-			<td style="width:386px;"><p>To produce a hardcopy of gender payrates report</p>
+			<td style="width:386px;"><p>To produce a hard copy of gender payrates report</p>
 			</td>
 			<td style="width:32px;"><p align="center">:heavy_check_mark:</p>
 			</td>
@@ -329,7 +329,7 @@ The Manager shall be able to:
 			</td>
 			<td style="width:253px;"><p>I want to print annual staff turnover ratio for the whole company</p>
 			</td>
-			<td style="width:386px;"><p>To produce a hardcopy of the staff turnover report</p>
+			<td style="width:386px;"><p>To produce a hard copy of the staff turnover report</p>
 			</td>
 			<td style="width:32px;"><p align="center">:heavy_check_mark:</p>
 			</td>
@@ -353,7 +353,7 @@ The Manager shall be able to:
 			</td>
 			<td style="width:253px;"><p>I want to print annual staff turnover ratio by region</p>
 			</td>
-			<td style="width:386px;"><p>To produce a hardcopy of the staff turnover report</p>
+			<td style="width:386px;"><p>To produce a hard copy of the staff turnover report</p>
 			</td>
 			<td style="width:32px;"><p>:heavy_check_mark:</p>
 			</td>

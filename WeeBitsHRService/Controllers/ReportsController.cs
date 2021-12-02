@@ -22,7 +22,7 @@ namespace WeeBitsHRService.Controllers
 		{
 			var employees = await _context.Employees
 				.Where(e => (!branchId.HasValue || e.BranchId == branchId) && e.IsActive)
-				.Include(e => e.JobCategory).Include(e => e.Branch).ToListAsync();
+				.Include(e => e.JobCategory).Include(e => e.Branch).OrderByDescending(e => e.CreatedAt).ToListAsync();
 
 			ViewData["Branch"] = branchId != null || branchId != 0 ? _context.Branches.FirstOrDefault(b => b.Id == branchId)?.Region : "";
 

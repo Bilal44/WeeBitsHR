@@ -100,7 +100,7 @@
 					@Html.DisplayNameFor(model => model.DOB)
 				</dt>
 				<dd class="col-sm-8">
-					@Model.DOB.ToShortDateString()
+					@Html.DisplayFor(model => model.DOB)
 				</dd>
 				<dt class="col-sm-4">
 					@Html.DisplayNameFor(model => model.Gender)
@@ -112,13 +112,13 @@
 					@Html.DisplayNameFor(model => model.JoinDate)
 				</dt>
 				<dd class="col-sm-8">
-					@Model.JoinDate.ToShortDateString()
+					@Html.DisplayFor(model => model.JoinDate)
 				</dd>
 				<dt class="col-sm-4">
 					@Html.DisplayNameFor(model => model.LeaveDate)
 				</dt>
 				<dd class="col-sm-8">
-					@Model.LeaveDate?.ToShortDateString()
+					@Html.DisplayFor(model => model.LeaveDate)
 				</dd>
 				<dt class="col-sm-4">
 					@Html.DisplayNameFor(model => model.JobCategory)
@@ -133,7 +133,7 @@
 					@Html.DisplayFor(model => model.Branch.Region)
 				</dd>
 			</dl>
-			<a class="w-100 btn btn-primary" asp-action="Index">Back to Employee List</a>
+			<a class="w-100 btn btn-primary" asp-controller="Reports" asp-action="CurrentEmployees">Back to Employee List</a>
 		</div>
 	</center>
 </div>

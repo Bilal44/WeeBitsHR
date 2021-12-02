@@ -4,11 +4,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WeeBitsHRService.Models
 {
-	public class User : IdentityUser
+	public abstract class User : IdentityUser
 	{
 		public override string Id { get => base.Id; set => base.Id = value; }
 		public override string UserName { get => base.UserName; set => base.UserName = value; }
-        public DateTime CreatedAt { get; set; }
+
+		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+		public DateTime CreatedAt { get; set; }
         public string CreatedBy { get; set; }
 
         [Required]

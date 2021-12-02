@@ -31,7 +31,7 @@ namespace WeeBitsHRService.Controllers
 		// GET: All Employees
 		public async Task<IActionResult> All()
 		{
-			var employees = await _context.Employees.Include(e => e.JobCategory).Include(e => e.Branch).ToListAsync();
+			var employees = await _context.Employees.Include(e => e.JobCategory).Include(e => e.Branch).OrderByDescending(e => e.CreatedAt).ToListAsync();
 			return View(employees);
 		}
 

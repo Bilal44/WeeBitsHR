@@ -41,7 +41,7 @@ Highcharts.chart('role-chart', {
 	tooltip: {
 		formatter: function () {
 			return '<b>' + this.series.name + '</b><br/>' +
-				this.point.y + ' ' + this.point.name.toLowerCase();
+				this.point.y + ' ' + this.point.name;
 		}
 	}
 });

@@ -100,7 +100,7 @@
 					<select asp-for="BranchId" class="form-control" asp-items="ViewBag.BranchId"></select>
 					<label asp-for="BranchId" class="control-label">Branch Region</label>
 				</div>
-					<a asp-action="Index" class="w-497 btn btn-lg text-light btn-warning">Back to Employee List</a>
+					<a asp-controller="Reports" asp-action="CurrentEmployees" class="w-497 btn btn-lg text-light btn-warning">Back to Employee List</a>
 					<input type="submit" value="Add Employee" class="w-497 btn btn-lg btn-primary" />
 			</form>
 		</div>
