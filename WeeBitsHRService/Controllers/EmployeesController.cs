@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography;
 using WeeBitsHRService.Data;
 using WeeBitsHRService.Models;
 
@@ -96,7 +97,7 @@ namespace WeeBitsHRService.Controllers
 				employee.CreatedAt = DateTime.Now;
 				var currentUser = await _userManager.GetUserAsync(User);
 				employee.CreatedBy = currentUser.Id;
-				var result = await _userManager.CreateAsync(employee, "Default-pass-123");
+				var result = await _userManager.CreateAsync(employee, GeneratePassword());
 				if (result.Succeeded)
 				{
 					await _userManager.AddToRoleAsync(employee, "Employee");
@@ -107,5 +108,23 @@ namespace WeeBitsHRService.Controllers
 
 			return View(employee);
 		}
-	}
+
+        #region Helpers
+		private string GeneratePassword()
+        {
+			string[] chars = new[] { "ABCDEFGHJKLMNPQRSTUVWXYZ", "abcdefghjkmnpqrstuvwxyz", "123456789", "!@#$%&-_=+?" };
+			var password = string.Join("", new [] {
+				chars[0][RandomNumberGenerator.GetInt32(chars[0].Length)],
+				chars[0][RandomNumberGenerator.GetInt32(chars[0].Length)],
+				chars[1][RandomNumberGenerator.GetInt32(chars[1].Length)],
+				chars[2][RandomNumberGenerator.GetInt32(chars[2].Length)],
+				chars[3][RandomNumberGenerator.GetInt32(chars[3].Length)],
+				chars[2][RandomNumberGenerator.GetInt32(chars[2].Length)],
+				chars[1][RandomNumberGenerator.GetInt32(chars[1].Length)],
+				chars[1][RandomNumberGenerator.GetInt32(chars[1].Length)]});
+			return password;
+
+		}
+        #endregion
+    }
 }
