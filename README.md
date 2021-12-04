@@ -8,7 +8,7 @@ and Edinburgh but plans to expand into Manchester (England), Newcastle (England)
 management system to support their business plan. User roles are Customer, Manager, and 
 Sales Staff. Minimum requirements are set out below:
 
-## Human Resource System (<b><a href="https://weebits.azurewebsites.net" target="_blank">Live Demo on Azure</b></a>)
+## Human Resource System (<b><a href="https://weebits.azurewebsites.net" target="_blank">Live Demo on Azure</a></b>)
 The Manager shall be able to:
 - Add a new employee record that shows name etc.
 - View (and print) the set of current employees in total and by regional delivery 
