@@ -3,7 +3,7 @@ using WeeBitsHRService.Models;
 
 namespace WeeBitsHRService.ViewModels
 {
-	public class AbsenteeProfileViewModel
+	public class AbsenteeProfileVM
 	{
 		[Display(Name = "Job Category")]
 		public JobCategory JobCategory { get; set; }

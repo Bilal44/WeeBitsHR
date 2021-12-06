@@ -3,7 +3,7 @@ using WeeBitsHRService.Models;
 
 namespace WeeBitsHRService.ViewModels
 {
-	public class AveragePayByGenderViewModel
+	public class AveragePayByGenderVM
 	{
 		public Gender Gender { get; set; }
 

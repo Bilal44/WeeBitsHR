@@ -65,8 +65,8 @@ namespace WeeBitsHRService.Controllers
 				&& e.IsActive)
 				.Include(e => e.JobCategory).ToListAsync();
 
-			ViewData["AvgPaybyGender"] = employees.GroupBy(e => e.Gender).Select(g => new AveragePayByGenderViewModel { Gender = g.Key, AveragePay = g.Average(e => e.Salary), TotalEmployees = g.Count() });
-			ViewData["AvgPaybyJob"] = employees.GroupBy(e => e.JobCategory).Select(g => new AveragePayByJobViewModel { JobCategory = g.Key, AveragePay = g.Average(e => e.Salary), TotalEmployees = g.Count() });
+			ViewData["AvgPaybyGender"] = employees.GroupBy(e => e.Gender).Select(g => new AveragePayByGenderVM { Gender = g.Key, AveragePay = g.Average(e => e.Salary), TotalEmployees = g.Count() });
+			ViewData["AvgPaybyJob"] = employees.GroupBy(e => e.JobCategory).Select(g => new AveragePayByJobVM { JobCategory = g.Key, AveragePay = g.Average(e => e.Salary), TotalEmployees = g.Count() });
 			ViewData["Branch"] = branchId != null || branchId != 0 ? _context.Branches.FirstOrDefault(b => b.Id == branchId)?.Region : "";
 
 			return View(employees);
@@ -88,7 +88,7 @@ namespace WeeBitsHRService.Controllers
 				.Where(a => !startDate.HasValue || a.DateofAbsence >= startDate
 				&& (!endDate.HasValue || a.DateofAbsence <= endDate))).ToList();
 
-			var absenteeProfile = employees.GroupBy(e => e.JobCategory).Select(g => new AbsenteeProfileViewModel { JobCategory = g.Key, AverageHoursOfAbsence = g.Average(e => e.Absences.Sum(a => a.NumberOfHours)), TotalEmployees = g.Count() });
+			var absenteeProfile = employees.GroupBy(e => e.JobCategory).Select(g => new AbsenteeProfileVM { JobCategory = g.Key, AverageHoursOfAbsence = g.Average(e => e.Absences.Sum(a => a.NumberOfHours)), TotalEmployees = g.Count() });
 
 			ViewData["StartDate"] = startDate.Value.ToShortDateString();
 			ViewData["EndDate"] = endDate.Value.ToShortDateString();
@@ -99,7 +99,7 @@ namespace WeeBitsHRService.Controllers
 		// GET: AnnualStaffTurnOver
 		public async Task<IActionResult> AnnualStaffTurnover(int? branchId, int? year)
 		{
-			var model = new AnnualTurnoverViewModel();
+			var model = new AnnualTurnoverVM();
 			if (year == null || Convert.ToInt32(year) == 0)
 			{
 				year = DateTime.Now.Year;
@@ -127,7 +127,7 @@ namespace WeeBitsHRService.Controllers
 			var annualStaffTurnover = averageEmployees > 0 ? (double) employeesLeft / averageEmployees : 0;
 
 			var branch = _context.Branches.FirstOrDefault(b => b.Id == branchId)?.Region;
-			model = new AnnualTurnoverViewModel(averageEmployees, newEmployees, employeesLeft, annualStaffTurnover, year.Value, branch);
+			model = new AnnualTurnoverVM(averageEmployees, newEmployees, employeesLeft, annualStaffTurnover, year.Value, branch);
 			return View(model);
 		}
 	}

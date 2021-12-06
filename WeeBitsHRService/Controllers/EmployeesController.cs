@@ -36,7 +36,7 @@ namespace WeeBitsHRService.Controllers
 			return View(employees);
 		}
 
-		// GET: Employees/Details/5
+		// GET: Employees/Details/name@weebits.co.uk
 		public async Task<IActionResult> Details(string email)
 		{
 			if (email == null)
@@ -48,6 +48,7 @@ namespace WeeBitsHRService.Controllers
 				.Where(e => e.Email == email)
 				.Include(e => e.Branch).Include(e => e.JobCategory)
 				.FirstOrDefaultAsync();
+
 			if (employee == null)
 			{
 				return NotFound();

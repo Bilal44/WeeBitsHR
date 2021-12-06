@@ -2,7 +2,7 @@
 
 namespace WeeBitsHRService.ViewModels
 {
-	public class AnnualTurnoverViewModel
+	public class AnnualTurnoverVM
 	{
 		[Display(Name = "Average Number of Employees")]
 		public int AverageNumberOfEmployees { get; set; }
@@ -21,7 +21,7 @@ namespace WeeBitsHRService.ViewModels
 		public int Year { get; set; }
 		public String Region { get; set; }
 
-		public AnnualTurnoverViewModel(int averageNumberOfEmployees, int newEmployees, int employeesLeft, double staffTurnoverRatio, int year, string region)
+		public AnnualTurnoverVM(int averageNumberOfEmployees, int newEmployees, int employeesLeft, double staffTurnoverRatio, int year, string region)
 		{
 			AverageNumberOfEmployees = averageNumberOfEmployees;
 			NewEmployees = newEmployees;
@@ -31,7 +31,7 @@ namespace WeeBitsHRService.ViewModels
 			Region = region;
 		}
 
-		public AnnualTurnoverViewModel()
+		public AnnualTurnoverVM()
 		{
 		}
 	}

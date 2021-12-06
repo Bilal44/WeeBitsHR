@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="WeeBitsHRService.ViewModels.AbsenteeProfileVM">
+    <Position X="2" Y="1" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAIAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\AbsenteeProfileVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeeBitsHRService.ViewModels.AnnualTurnoverVM">
+    <Position X="6" Y="0.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAhAAAAAAAAAAAAAAABAAAAEAAAAAAAAAQEAA=</HashCode>
+      <FileName>ViewModels\AnnualTurnoverVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeeBitsHRService.ViewModels.AveragePayByGenderVM">
+    <Position X="2" Y="3" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>ViewModels\AveragePayByGenderVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeeBitsHRService.ViewModels.AveragePayByJobVM">
+    <Position X="6" Y="3.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>ViewModels\AveragePayByJobVM.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -3,8 +3,8 @@
 
 @model IEnumerable<Employee>
  @{
-	var avgbyGender = ViewData["AvgPaybyGender"] as IEnumerable<AveragePayByGenderViewModel>;
-	var avgbyJobCategory = ViewData["AvgPaybyJob"] as IEnumerable<AveragePayByJobViewModel>;
+	var avgbyGender = ViewData["AvgPaybyGender"] as IEnumerable<AveragePayByGenderVM>;
+	var avgbyJobCategory = ViewData["AvgPaybyJob"] as IEnumerable<AveragePayByJobVM>;
 }
 @{
 	ViewData["Title"] = "Average Payrate Reports";

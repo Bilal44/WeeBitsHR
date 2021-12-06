@@ -1,4 +1,4 @@
-name: Build and deploy Weebits .NET Core app to Azure App Service
+name: Azure CI/CD - Build and deploy Weebits .NET Core app to Azure App Service
 on:
   push:
     branches:
