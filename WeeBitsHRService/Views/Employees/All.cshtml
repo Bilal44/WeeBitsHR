@@ -78,7 +78,7 @@
                 @Html.DisplayFor(modelItem => item.PayrollNumber)
             </td>
             <td>
-                @Html.Raw(item.IsActive ? "<i class='far fa-2x fa-check-circle text-success'></i>" : "<i class='far fa-2x fa-times-circle text-danger'></i>")
+               <center><i class="fas fa-2x @(item.IsActive ? "fa-check-circle text-success" : "fa-minus-circle text-danger")"></i></center>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Position)
@@ -105,7 +105,7 @@
                 @Html.DisplayFor(modelItem => item.Branch.Region)
             </td>
             <td>
-                <a class="btn btn-sm btn-primary" asp-action="Details" asp-route-email="@item.Email"><i class="fas fa-info-circle"></i> Details</a>
+                <a class="btn btn-sm btn-secondary" asp-action="Details" asp-route-email="@item.Email"><i class="fas fa-info-circle"></i> Details</a>
             </td>
         </tr>
 }

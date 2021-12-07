@@ -1,6 +1,5 @@
 html {
     font-size: 14px;
-    background-color: #65e8e0;
 }
 
 @media (min-width: 768px) {
@@ -16,14 +15,13 @@ html {
 
 body {
     margin-bottom: 60px;
-    background-color: #65e8e0;
 }
 
 .splash {
-    background: url("../img/main.jpg");
+    background: url("../img/main.png");
     height: 75vh;
-    background-position: center;
-    background-size: cover;
+    background-position:center;
+    background-repeat: no-repeat;
 }
 
 footer {
@@ -37,10 +35,6 @@ footer {
 .dataTable th {
     background-color: #000;
     color: white;
-}
-
-.dataTable td {
-    background-color: #65e8e0;
 }
 
 .dt-button {
@@ -127,9 +121,7 @@ tr {
 
 .card {
     margin: 1.5rem;
-    border: none;
-    color: white;
-    background: #2D3436;
+    border: 0.1px ridge;
     border-radius: 4px;
     box-shadow: 0 10px 40px 0 rgb(62 57 107 / 7%), 0 2px 9px 0 rgb(62 57 107 / 6%);
 }

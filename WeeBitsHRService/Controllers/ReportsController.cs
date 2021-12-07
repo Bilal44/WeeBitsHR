@@ -39,7 +39,7 @@ namespace WeeBitsHRService.Controllers
 
 			if (startAge.Value < 15 || endAge.Value < 15)
 			{
-				TempData["Error"] = "Please valid start and end age, it may cause wrong or no data to show up.";
+				TempData["Error"] = "Please enter valid start and end age, it may cause wrong or no data to show up.";
 			}
 
 			var employees = await _context.Employees
@@ -100,10 +100,15 @@ namespace WeeBitsHRService.Controllers
 		public async Task<IActionResult> AnnualStaffTurnover(int? branchId, int? year)
 		{
 			var model = new AnnualTurnoverVM();
-			if (year == null || Convert.ToInt32(year) == 0)
+			if (year == null || Convert.ToInt32(year) == 0 || Convert.ToInt32(year) < 2000)
 			{
 				year = DateTime.Now.Year;
 				TempData["Error"] = "Pleae enter a valid year.";
+			}
+
+			if (year > DateTime.Now.Year)
+			{
+				TempData["Error"] = "Please enter a valid year, we do not have to capability to peek into the future yet :).";
 			}
 
 			var initialEmployees = await _context.Employees

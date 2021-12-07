@@ -46,7 +46,7 @@
                             customize: function (win) {
                                 $(win.document.body)
                                     .prepend(
-                                        '<img src="' + url + '/img/logo.png" style="position:absolute; bottom:0; right:0;" />'
+                                        '<img src="' + url + '/img/logo.png" style="position:absolute; bottom:0; right:0;" width="150" />'
                                     );
 
                                 $(win.document.body).find('table')
