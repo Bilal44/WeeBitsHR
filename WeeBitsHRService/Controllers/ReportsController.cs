@@ -18,86 +18,91 @@ namespace WeeBitsHRService.Controllers
 		}
 
 		// GET: CurrentEmployees
-		public async Task<IActionResult> CurrentEmployees(int? branchId)
+		[Route("current-employees")]
+		public async Task<IActionResult> CurrentEmployees(int? branch_id)
 		{
 			var employees = await _context.Employees
-				.Where(e => (!branchId.HasValue || e.BranchId == branchId) && e.IsActive)
+				.Where(e => (!branch_id.HasValue || e.BranchId == branch_id) && e.IsActive)
 				.Include(e => e.JobCategory).Include(e => e.Branch).OrderByDescending(e => e.CreatedAt).ToListAsync();
 
-			ViewData["Branch"] = branchId != null || branchId != 0 ? _context.Branches.FirstOrDefault(b => b.Id == branchId)?.Region : "";
+			ViewData["Branch"] = branch_id != null || branch_id != 0 ? _context.Branches.FirstOrDefault(b => b.Id == branch_id)?.Region : "";
 
 			return View(employees);
 		}
 
 		// GET: EmployeesDemographics
-		public async Task<IActionResult> EmployeesDemographics(Gender? gender, int? startAge, int? endAge)
+		[Route("employees-demographics")]
+		public async Task<IActionResult> EmployeesDemographics(Gender? gender, int? start_age, int? end_age)
 		{
-			if (startAge.Value > endAge.Value)
+			if (start_age.Value > end_age.Value)
 			{
 				TempData["Warning"] = "The start age is after the end age, it may cause wrong or no data to show up.";
 			}
 
-			if (startAge.Value < 15 || endAge.Value < 15)
+			if (start_age.Value < 15 || end_age.Value < 15)
 			{
 				TempData["Error"] = "Please enter valid start and end age, it may cause wrong or no data to show up.";
 			}
 
 			var employees = await _context.Employees
-				.Where(e => (!startAge.HasValue || e.DOB < DateTime.Now.AddYears(-startAge.Value))
-				&& (!endAge.HasValue || e.DOB > DateTime.Now.AddYears(-endAge.Value))
+				.Where(e => (!start_age.HasValue || e.DOB < DateTime.Now.AddYears(-start_age.Value))
+				&& (!end_age.HasValue || e.DOB > DateTime.Now.AddYears(-end_age.Value))
 				&& (!gender.HasValue || e.Gender == gender)
 				&& e.IsActive)
 				.Include(e => e.JobCategory).ToListAsync();
 
 			ViewData["Count"] = employees.Count;
-			ViewData["StartAge"] = startAge ?? 0;
-			ViewData["EndAge"] = endAge ?? 99;
+			ViewData["StartAge"] = start_age ?? 0;
+			ViewData["EndAge"] = end_age ?? 99;
 			ViewData["Gender"] = gender;
 
 			return View(employees);
 		}
 
 		// GET: AveragePayrate
-		public async Task<IActionResult> AveragePayrate(int? branchId)
+		[Route("average-payrates")]
+		public async Task<IActionResult> AveragePayrate(int? branch_id)
 		{
 			var employees = await _context.Employees
-				.Where(e => (!branchId.HasValue || e.BranchId == branchId)
+				.Where(e => (!branch_id.HasValue || e.BranchId == branch_id)
 				&& e.IsActive)
 				.Include(e => e.JobCategory).ToListAsync();
 
 			ViewData["AvgPaybyGender"] = employees.GroupBy(e => e.Gender).Select(g => new AveragePayByGenderVM { Gender = g.Key, AveragePay = g.Average(e => e.Salary), TotalEmployees = g.Count() });
 			ViewData["AvgPaybyJob"] = employees.GroupBy(e => e.JobCategory).Select(g => new AveragePayByJobVM { JobCategory = g.Key, AveragePay = g.Average(e => e.Salary), TotalEmployees = g.Count() });
-			ViewData["Branch"] = branchId != null || branchId != 0 ? _context.Branches.FirstOrDefault(b => b.Id == branchId)?.Region : "";
+			ViewData["Branch"] = branch_id != null || branch_id != 0 ? _context.Branches.FirstOrDefault(b => b.Id == branch_id)?.Region : "";
 
 			return View(employees);
 		}
 
 		// GET: AbsenteeProfile
-		public async Task<IActionResult> AbsenteeProfile(DateTime? startDate, DateTime? endDate)
+		[Route("absentee-profile")]
+		public async Task<IActionResult> AbsenteeProfile(DateTime? start_date, DateTime? end_date)
 		{
-			startDate ??= DateTime.Parse("01/01/2000");
-			endDate ??= DateTime.Now;
+			start_date ??= DateTime.Parse("01/01/2000");
+			end_date ??= DateTime.Now;
 
-			if (startDate.Value > endDate.Value)
+			if (start_date.Value > end_date.Value)
 			{
 				TempData["Warning"] = "The start date is after the end date, it may cause wrong or no data to show up.";
 			}
 
 			var employees = _context.Employees
 				.Include(e => e.JobCategory).Where(e => e.IsActive).Include(e => e.Absences
-				.Where(a => !startDate.HasValue || a.DateofAbsence >= startDate
-				&& (!endDate.HasValue || a.DateofAbsence <= endDate))).ToList();
+				.Where(a => !start_date.HasValue || a.DateofAbsence >= start_date
+				&& (!end_date.HasValue || a.DateofAbsence <= end_date))).ToList();
 
 			var absenteeProfile = employees.GroupBy(e => e.JobCategory).Select(g => new AbsenteeProfileVM { JobCategory = g.Key, AverageHoursOfAbsence = g.Average(e => e.Absences.Sum(a => a.NumberOfHours)), TotalEmployees = g.Count() });
 
-			ViewData["StartDate"] = startDate.Value.ToShortDateString();
-			ViewData["EndDate"] = endDate.Value.ToShortDateString();
+			ViewData["StartDate"] = start_date.Value.ToShortDateString();
+			ViewData["EndDate"] = end_date.Value.ToShortDateString();
 
 			return View(absenteeProfile);
 		}
 
 		// GET: AnnualStaffTurnOver
-		public async Task<IActionResult> AnnualStaffTurnover(int? branchId, int? year)
+		[Route("annual-staff-turnover")]
+		public async Task<IActionResult> AnnualStaffTurnover(int? branch_id, int? year)
 		{
 			var model = new AnnualTurnoverVM();
 			if (year == null || Convert.ToInt32(year) == 0 || Convert.ToInt32(year) < 2000)
@@ -112,26 +117,26 @@ namespace WeeBitsHRService.Controllers
 			}
 
 			var initialEmployees = await _context.Employees
-				.Where(e => (!branchId.HasValue || e.BranchId == branchId)
+				.Where(e => (!branch_id.HasValue || e.BranchId == branch_id)
 				&& e.JoinDate.Year < year
 				&& e.IsActive)
 				.Include(e => e.Branch).CountAsync();
 
 			var newEmployees = await _context.Employees
-				.Where(e => (!branchId.HasValue || e.BranchId == branchId)
+				.Where(e => (!branch_id.HasValue || e.BranchId == branch_id)
 				&& e.JoinDate.Year == year
 				&& e.IsActive)
 				.Include(e => e.Branch).CountAsync();
 
 			var employeesLeft = await _context.Employees
-				.Where(e => (!branchId.HasValue || e.BranchId == branchId)
+				.Where(e => (!branch_id.HasValue || e.BranchId == branch_id)
 				&& e.LeaveDate.Value.Year == year)
 				.Include(e => e.Branch).CountAsync();
 
 			var averageEmployees = (initialEmployees * 2 + newEmployees - employeesLeft) / 2;
 			var annualStaffTurnover = averageEmployees > 0 ? (double) employeesLeft / averageEmployees : 0;
 
-			var branch = _context.Branches.FirstOrDefault(b => b.Id == branchId)?.Region;
+			var branch = _context.Branches.FirstOrDefault(b => b.Id == branch_id)?.Region;
 			model = new AnnualTurnoverVM(averageEmployees, newEmployees, employeesLeft, annualStaffTurnover, year.Value, branch);
 			return View(model);
 		}
