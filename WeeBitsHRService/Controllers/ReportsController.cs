@@ -124,8 +124,7 @@ namespace WeeBitsHRService.Controllers
 
 			var newEmployees = await _context.Employees
 				.Where(e => (!branch_id.HasValue || e.BranchId == branch_id)
-				&& e.JoinDate.Year == year
-				&& e.IsActive)
+				&& e.JoinDate.Year == year)
 				.Include(e => e.Branch).CountAsync();
 
 			var employeesLeft = await _context.Employees
