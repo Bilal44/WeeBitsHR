@@ -3,14 +3,14 @@ html {
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
@@ -20,7 +20,7 @@ body {
 .splash {
     background: url("../img/main.png");
     height: 75vh;
-    background-position:center;
+    background-position: center;
     background-repeat: no-repeat;
 }
 
@@ -77,6 +77,13 @@ footer {
     width: 49.7% !important;
 }
 
+@media (max-width: 1500px) {
+    .w-497 {
+        width: 100% !important;
+        margin-bottom: 0.5rem;
+    }
+}
+
 .navbar-brand {
     font-size: 1.3rem;
     font-weight: 600;
@@ -102,7 +109,7 @@ main {
 }
 
 tr {
-    vertical-align: middle; 
+    vertical-align: middle;
 }
 
 .card .align-self-center {

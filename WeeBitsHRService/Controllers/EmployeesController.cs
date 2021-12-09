@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
+using System.Text.RegularExpressions;
 using WeeBitsHRService.Data;
 using WeeBitsHRService.Models;
 
@@ -80,6 +81,11 @@ namespace WeeBitsHRService.Controllers
 				TempData["Error"] = $"An employee already exists with payroll number '{employee.PayrollNumber}'. " +
 					$"Every employee should have a unique payroll number, please make sure that a new payroll number has been " +
 					"assigned to the employee.";
+			}
+
+			if (!Regex.Match(employee.PhoneNumber,@"^\+?[0-9]\d{4,14}$").Success)
+            {
+				TempData["Error"] += "<br>Please enter a valid phone number.";
 			}
 
 			if (employee.JoinDate.Date > DateTime.Now.Date)
