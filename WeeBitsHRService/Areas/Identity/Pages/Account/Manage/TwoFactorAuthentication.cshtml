@@ -2,14 +2,16 @@
 @using Microsoft.AspNetCore.Http.Features
 @model TwoFactorAuthenticationModel
 @{
-    ViewData["Title"] = "Two-factor authentication (2FA)";
+    ViewData["Title"] = "2FA Authenticator App";
     ViewData["ActivePage"] = ManageNavPages.TwoFactorAuthentication;
 }
 
-<partial name="_StatusMessage" for="StatusMessage" />
 <h3>@ViewData["Title"]</h3>
+<br />
 @{
     var consentFeature = HttpContext.Features.Get<ITrackingConsentFeature>();
+    	<div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
+        <partial name="_StatusMessage" for="StatusMessage" />
     @if (consentFeature?.CanTrack ?? true)
     {
         @if (Model.Is2faEnabled)
@@ -39,22 +41,21 @@
             if (Model.IsMachineRemembered)
             {
                 <form method="post" style="display: inline-block">
-                    <button type="submit" class="btn btn-primary">Forget this browser</button>
+                    <button type="submit" class="btn btn-warning mb-1">Forget This Browser</button>
                 </form>
             }
-            <a asp-page="./Disable2fa" class="btn btn-primary">Disable 2FA</a>
-            <a asp-page="./GenerateRecoveryCodes" class="btn btn-primary">Reset recovery codes</a>
+            <a asp-page="./Disable2fa" class="w-100 btn btn-lg btn-secondary mb-1">Disable 2FA</a>
+            <a asp-page="./GenerateRecoveryCodes" class="w-100 btn btn-lg btn-primary mb-1">Reset Recovery Codes</a>
         }
 
-        <h4>Authenticator app</h4>
         @if (!Model.HasAuthenticator)
         {
-            <a id="enable-authenticator" asp-page="./EnableAuthenticator" class="btn btn-primary">Add authenticator app</a>
+            <a id="enable-authenticator" asp-page="./EnableAuthenticator" class="w-100 btn btn-lg btn-primary mb-1">Add Another Authenticator App</a>
         }
         else
         {
-            <a id="enable-authenticator" asp-page="./EnableAuthenticator" class="btn btn-primary">Set up authenticator app</a>
-            <a id="reset-authenticator" asp-page="./ResetAuthenticator" class="btn btn-primary">Reset authenticator app</a>
+            <a id="enable-authenticator" asp-page="./EnableAuthenticator" class="w-100 btn btn-lg btn-primary mb-1">Add Authenticator App</a>
+            <a id="reset-authenticator" asp-page="./ResetAuthenticator" class="w-100 btn btn-lg btn-danger mb-1">Reset Authenticator App</a>
         }
     }
     else
@@ -64,6 +65,7 @@
             <p>You must accept the policy before you can enable two factor authentication.</p>
         </div>
     }
+    </div>
 }
 
 @section Scripts {

@@ -132,3 +132,16 @@ tr {
     border-radius: 4px;
     box-shadow: 0 10px 40px 0 rgb(62 57 107 / 7%), 0 2px 9px 0 rgb(62 57 107 / 6%);
 }
+
+.nav-link {
+    color: black;
+}
+
+    .nav-pills .nav-link:hover {
+        color: #6c757d;
+    }
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: white;
+    background: #6c757d;
+}
