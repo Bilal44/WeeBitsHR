@@ -4,9 +4,12 @@
     ViewData["Title"] = "Recovery codes";
     ViewData["ActivePage"] = "TwoFactorAuthentication";
 }
-
-<partial name="_StatusMessage" for="StatusMessage" />
 <h3>@ViewData["Title"]</h3>
+<br />
+
+<div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
+<partial name="_StatusMessage" for="StatusMessage" />
+
 <div class="alert alert-warning" role="alert">
     <p>
         <strong>Put these codes in a safe place.</strong>
@@ -15,11 +18,11 @@
         If you lose your device and don't have the recovery codes you will lose access to your account.
     </p>
 </div>
-<div class="row">
-    <div class="col-md-12">
-        @for (var row = 0; row < Model.RecoveryCodes.Length; row += 2)
-        {
-            <code class="recovery-code">@Model.RecoveryCodes[row]</code><text>&nbsp;</text><code class="recovery-code">@Model.RecoveryCodes[row + 1]</code><br />
-        }
+@for (var row = 0; row < Model.RecoveryCodes.Length; row += 2)
+{
+    <div class="d-flex">
+    <code class="recovery-code">@Model.RecoveryCodes[row]</code><code class="recovery-code">@Model.RecoveryCodes[row + 1]</code>
+    <br />
     </div>
+}
 </div>

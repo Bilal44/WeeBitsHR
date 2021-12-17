@@ -145,3 +145,11 @@ tr {
     color: white;
     background: #6c757d;
 }
+
+.recovery-code {
+    flex: 1;
+}
+
+code {
+    font-size: 1.25rem;
+}
