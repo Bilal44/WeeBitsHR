@@ -1,13 +1,15 @@
 ﻿@page
 @model Disable2faModel
 @{
-    ViewData["Title"] = "Disable two-factor authentication (2FA)";
+    ViewData["Title"] = "Disable Two-Factor Authentication";
     ViewData["ActivePage"] = ManageNavPages.TwoFactorAuthentication;
 }
 
-<partial name="_StatusMessage" for="StatusMessage" />
 <h3>@ViewData["Title"]</h3>
+<br />
 
+<div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12">
+<partial name="_StatusMessage" for="StatusMessage" />
 <div class="alert alert-warning" role="alert">
     <p>
         <strong>This action only disables 2FA.</strong>
@@ -20,6 +22,7 @@
 
 <div>
     <form method="post">
-        <button class="btn btn-danger" type="submit">Disable 2FA</button>
+        <button class="w-100 btn btn-lg btn-danger" type="submit">Disable 2FA</button>
     </form>
 </div>
+<div>
