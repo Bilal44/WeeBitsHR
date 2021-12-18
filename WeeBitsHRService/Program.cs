@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
+using System.Text.RegularExpressions;
 using WeeBitsHRService.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +20,12 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 	.AddRoles<IdentityRole>()
 	.AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddRouting(options =>options.LowercaseUrls = true);
+builder.Services.AddRazorPages(options =>
+{
+	options.Conventions.Add(
+		new PageRouteTransformerConvention(
+			new SlugifyRazorPages()));
+});
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -50,6 +58,22 @@ app.UseAuthorization();
 app.MapControllerRoute(
 	name: "default",
 	pattern: "{controller=Home}/{action=Index}/{id?}");
-app.MapRazorPages();
+
+ app.MapRazorPages();
 
 app.Run();
+
+
+public class SlugifyRazorPages : IOutboundParameterTransformer
+{
+	public string TransformOutbound(object value)
+	{
+		if (value == null) { return null; }
+
+		return Regex.Replace(value.ToString(),
+							 "([a-z0-9])([A-Z0-9])",
+							 "$1-$2",
+							 RegexOptions.CultureInvariant,
+							 TimeSpan.FromMilliseconds(100)).ToLowerInvariant();
+	}
+}
