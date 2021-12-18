@@ -34,7 +34,7 @@ else
 	app.UseHsts();
 }
 
-var cultureInfo = new CultureInfo("en-US");
+var cultureInfo = new CultureInfo("en-GB");
 cultureInfo.NumberFormat.CurrencySymbol = "£";
 
 CultureInfo.DefaultThreadCurrentCulture = cultureInfo;

@@ -8,7 +8,6 @@ namespace WeeBitsHRService.Models
 		public int Id { get; set; }
 
 		[Required]
-		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
 		[Display(Name = "Date of Absence")]
 		public DateTime DateofAbsence { get; set; }
 

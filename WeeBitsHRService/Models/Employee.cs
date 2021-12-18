@@ -22,7 +22,6 @@ namespace WeeBitsHRService.Models
 
 		[Required]
 		[DataType(DataType.Date)]
-		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
 		[Display(Name = "Date of Birth")]
 		public DateTime DOB { get; set; }
 
@@ -33,12 +32,10 @@ namespace WeeBitsHRService.Models
 
 		[Required]
 		[DataType(DataType.Date)]
-		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
 		[Display(Name = "Join Date")]
 		public DateTime JoinDate { get; set; }
 
 		[DataType(DataType.Date)]
-		[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
 		[Display(Name = "Leave Date")]
 		public DateTime? LeaveDate { get; set; }
 
