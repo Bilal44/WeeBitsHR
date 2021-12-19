@@ -114,12 +114,14 @@
 				<dd class="col-sm-8">
 					@Html.DisplayFor(model => model.JoinDate)
 				</dd>
+				@if (Model.LeaveDate != null) {
 				<dt class="col-sm-4">
 					@Html.DisplayNameFor(model => model.LeaveDate)
 				</dt>
 				<dd class="col-sm-8">
 					@Html.DisplayFor(model => model.LeaveDate)
 				</dd>
+				}
 				<dt class="col-sm-4">
 					@Html.DisplayNameFor(model => model.JobCategory)
 				</dt>

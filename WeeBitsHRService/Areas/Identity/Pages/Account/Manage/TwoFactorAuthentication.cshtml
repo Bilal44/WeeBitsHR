@@ -50,11 +50,11 @@
 
         @if (!Model.HasAuthenticator)
         {
-            <a id="enable-authenticator" asp-page="./EnableAuthenticator" class="w-100 btn btn-lg btn-primary mb-1">Add Another Authenticator App</a>
+            <a id="enable-authenticator" asp-page="./EnableAuthenticator" class="w-100 btn btn-lg btn-primary mb-1">Add Authenticator App</a>
         }
         else
         {
-            <a id="enable-authenticator" asp-page="./EnableAuthenticator" class="w-100 btn btn-lg btn-primary mb-1">Add Authenticator App</a>
+            <a id="enable-authenticator" asp-page="./EnableAuthenticator" class="w-100 btn btn-lg btn-primary mb-1">Add Another Authenticator App</a>
             <a id="reset-authenticator" asp-page="./ResetAuthenticator" class="w-100 btn btn-lg btn-danger mb-1">Reset Authenticator App</a>
         }
     }
