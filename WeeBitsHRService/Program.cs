@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.EntityFrameworkCore;
@@ -15,11 +14,18 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 	options.UseLazyLoadingProxies();
 	options.UseSqlServer(connectionString);
 });
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
 	.AddRoles<IdentityRole>()
 	.AddEntityFrameworkStores<ApplicationDbContext>();
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+	options.AccessDeniedPath = new PathString("/access-denied");
+});
+
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
 builder.Services.AddRazorPages(options =>
