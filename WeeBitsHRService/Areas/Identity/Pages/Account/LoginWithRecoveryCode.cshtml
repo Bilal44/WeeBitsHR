@@ -22,8 +22,9 @@
 					<label asp-for="Input.RecoveryCode" class="form-label"></label>
 					<span asp-validation-for="Input.RecoveryCode" class="text-danger"></span>
 				</div>
-				<button type="submit" class="w-100 btn btn-lg btn-primary">Login</button>
+				<button type="submit" class="w-100 btn btn-lg btn-primary mb-2">Login</button>
 			</form>
+			<a class="w-100 btn btn-lg btn-secondary" id="2fa-login" asp-page="./LoginWith2FA" asp-route-returnUrl="@Model.ReturnUrl">Return to 2FA Authenticator Code</a>
 		</div>
 	</center>
 </div>
