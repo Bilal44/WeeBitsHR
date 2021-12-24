@@ -34,6 +34,17 @@ builder.Services.AddRazorPages(options =>
 		new PageRouteTransformerConvention(
 			new SlugifyRazorPages()));
 
+	// Profile management routes (after logging in)
+	options.Conventions.AddAreaPageRoute("Identity", "/Account/Manage/ChangePassword", "/Profile/Change-Password");
+	options.Conventions.AddAreaPageRoute("Identity", "/Account/Manage/Disable2fa", "/Profile/Disable-2fa");
+	options.Conventions.AddAreaPageRoute("Identity", "/Account/Manage/EnableAuthenticator", "/Profile/Enable-Authenticator");
+	options.Conventions.AddAreaPageRoute("Identity", "/Account/Manage/GenerateRecoveryCodes", "/Profile/Generate-Recovery-Codes");
+	options.Conventions.AddAreaPageRoute("Identity", "/Account/Manage/Index", "/Profile");
+	options.Conventions.AddAreaPageRoute("Identity", "/Account/Manage/ResetAuthenticator", "/Profile/Reset-Authenticator");
+	options.Conventions.AddAreaPageRoute("Identity", "/Account/Manage/ShowRecoveryCodes", "/Profile/Show-Recovery-Codes");
+	options.Conventions.AddAreaPageRoute("Identity", "/Account/Manage/TwoFactorAuthentication", "/Profile/Two-Factor-Authentication");
+
+	// Publicly accessible routes (no login required)
 	options.Conventions.AddAreaPageRoute("Identity", "/Account/AccessDenied", "/Access-Denied");
 	options.Conventions.AddAreaPageRoute("Identity", "/Account/ConfirmEmail", "/Confirm-Email");
 	options.Conventions.AddAreaPageRoute("Identity", "/Account/ConfirmEmailChange", "/Confirm-Email-Change");
