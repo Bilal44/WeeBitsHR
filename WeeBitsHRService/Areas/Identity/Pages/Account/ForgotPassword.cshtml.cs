@@ -31,7 +31,7 @@ namespace WeeBitsHRService.Areas.Identity.Pages.Account
 		[BindProperty]
 		public InputModel Input { get; set; }
 
-		[TempData]
+		[ViewData]
 		public string StatusMessage { get; set; }
 
 		/// <summary>
