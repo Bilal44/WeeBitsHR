@@ -26,7 +26,7 @@
 			</li>
 		}
 		<li class="nav-item m-1">
-			<a class="nav-link text-dark">Welcome, @User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"))!</a>
+			<a class="nav-link text-dark" href="/profile">Welcome, @User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"))!</a>
 		</li>
 		<li class="nav-item mt-1">
 			<form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Content("/")" method="post">
